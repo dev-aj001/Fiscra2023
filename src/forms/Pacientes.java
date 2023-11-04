@@ -5,10 +5,15 @@
 package forms;
 
 
+import com.formdev.flatlaf.FlatClientProperties;
 import custom.Icons;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jpa.JPAController;
+import jpa.exceptions.NonexistentEntityException;
 import modelos.Paciente;
 
 /**
@@ -24,10 +29,11 @@ public class Pacientes extends javax.swing.JPanel {
      */
     private Pacientes() {
         initComponents();
+        //initPropieties();
         setOpaque(false);
         
         actualizarTabla();
-        jLabel1.putClientProperty( "FlatLaf.styleClass", "h1" );
+        lblTitle.putClientProperty( "FlatLaf.styleClass", "h1" );
         setupSearch();
     }
     
@@ -52,7 +58,7 @@ public class Pacientes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -64,9 +70,9 @@ public class Pacientes extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JButton();
         roundPanel2 = new custom.RoundPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblRegistrados = new javax.swing.JLabel();
         roundPanel3 = new custom.RoundPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblActivos = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 204, 0));
@@ -79,7 +85,7 @@ public class Pacientes extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Apellido", "Expedientes"
+                "ID", "Nombre", "Apellido paterno", "Apellido materno", "Fecha nacimiento"
             }
         ));
         jScrollPane1.setViewportView(tabla);
@@ -87,7 +93,8 @@ public class Pacientes extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
         jPanel3.setOpaque(false);
 
-        jLabel1.setText("Pacientes");
+        lblTitle.setBackground(new java.awt.Color(51, 51, 51));
+        lblTitle.setText("Pacientes");
 
         jPanel1.setOpaque(false);
 
@@ -116,11 +123,21 @@ public class Pacientes extends javax.swing.JPanel {
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setIcon(Icons.delete());
         btnEliminar.setText("Dar baja");
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -182,7 +199,7 @@ public class Pacientes extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -192,7 +209,7 @@ public class Pacientes extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -208,7 +225,8 @@ public class Pacientes extends javax.swing.JPanel {
 
         roundPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel2.setText("Registrados: 0");
+        lblRegistrados.setBackground(new java.awt.Color(51, 51, 51));
+        lblRegistrados.setText("Registrados: 0");
 
         javax.swing.GroupLayout roundPanel2Layout = new javax.swing.GroupLayout(roundPanel2);
         roundPanel2.setLayout(roundPanel2Layout);
@@ -216,20 +234,21 @@ public class Pacientes extends javax.swing.JPanel {
             roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblRegistrados)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundPanel2Layout.setVerticalGroup(
             roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblRegistrados)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         roundPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel3.setText("Activos: 0");
+        lblActivos.setBackground(new java.awt.Color(51, 51, 51));
+        lblActivos.setText("Activos: 0");
 
         javax.swing.GroupLayout roundPanel3Layout = new javax.swing.GroupLayout(roundPanel3);
         roundPanel3.setLayout(roundPanel3Layout);
@@ -237,14 +256,14 @@ public class Pacientes extends javax.swing.JPanel {
             roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(lblActivos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundPanel3Layout.setVerticalGroup(
             roundPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(lblActivos)
                 .addContainerGap())
         );
 
@@ -316,12 +335,21 @@ public class Pacientes extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        agregarPaciente();
+        agregar();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+        new ModificarPaciente(id, this).setVisible(true);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        eliminar();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -332,15 +360,15 @@ public class Pacientes extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblActivos;
+    private javax.swing.JLabel lblRegistrados;
+    private javax.swing.JLabel lblTitle;
     private custom.RoundPanel roundPanel1;
     private custom.RoundPanel roundPanel2;
     private custom.RoundPanel roundPanel3;
@@ -353,13 +381,28 @@ public class Pacientes extends javax.swing.JPanel {
         //txtSearch.putClientProperty("JTextField.showClearButton", true);
         
     }
+    
+    private void initPropieties(){
+        lblTitle.putClientProperty(FlatClientProperties.STYLE, ""+
+                "[light]foreground:lighten(@background,30%);"+
+                "[dark]foreground:darken(@background,30%)"
+                );
+        lblActivos.putClientProperty(FlatClientProperties.STYLE, ""+
+                "[light]foreground:lighten(@foreground,30%);"+
+                "[dark]foreground:darken(@foreground,80%)"
+                );
+        lblRegistrados.putClientProperty(FlatClientProperties.STYLE, ""+
+                "[light]foreground:lighten(@foreground,30%);"+
+                "[dark]foreground:darken(@foreground,80%)"
+                );
+    }
 
-    private void agregarPaciente() {
-        NuevoPaciente np = new NuevoPaciente();
+    private void agregar() {
+        RegistroPaciente np = new RegistroPaciente(this);
         np.setVisible(true);
     }
 
-    private void actualizarTabla() {
+    public void actualizarTabla() {
         try {
             DefaultTableModel dtm = (DefaultTableModel)tabla.getModel();
             dtm.setRowCount(0);
@@ -374,8 +417,21 @@ public class Pacientes extends javax.swing.JPanel {
             }
 
             tabla.setModel(dtm);
+            
+            lblRegistrados.setText("Registrados: " + jpa.conteoDePacientes());
         } catch (Exception e) {
             System.out.println("error: " + e.getMessage());
+        }
+    }
+
+    private void eliminar() {
+        Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+        JPAController cp = new JPAController();
+        int op = JOptionPane.showConfirmDialog(null, "desea eliminar el paciente con el id: "+ id);
+        if(op==JOptionPane.OK_OPTION){
+            cp.eliminarPaciente(id);
+            JOptionPane.showMessageDialog(null, "se elimino exitosamente");
+            actualizarTabla();
         }
     }
 }

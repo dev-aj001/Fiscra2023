@@ -4,8 +4,15 @@
  */
 package fiscra;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.EventQueue;
 import vista.GerenteMain;
+import vista.LoginFrame;
+import vista.ResetLogin;
+import vista.ResetLoginFrame;
 
 /**
  *
@@ -24,8 +31,11 @@ public class Main {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        FlatIntelliJLaf.registerCustomDefaultsSource("styles");
-        new GerenteMain().setVisible(true);
+        System.setProperty("flatlaf.uiScale", "1.0");
+        FlatLaf.registerCustomDefaultsSource("styles");
+        //FlatLightLaf.setup();
+        FlatDarkLaf.setup();
+        new LoginFrame().setVisible(true);
     }
     
 }

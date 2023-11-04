@@ -7,24 +7,27 @@ package forms;
 
 import custom.Icons;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jpa.JPAController;
-import modelos.Paciente;
+import jpa.exceptions.NonexistentEntityException;
+import modelos.Agendaactividades;
 import modelos.Usuario;
 
 /**
  *
  * @author jairi
  */
-public class Usuarios extends javax.swing.JPanel {
+public class AgendaActividades extends javax.swing.JPanel {
     
-    private static Usuarios instance;
+    private static AgendaActividades instance;
 
     /**
      * Creates new form Pacientes
      */
-    private Usuarios() {
+    private AgendaActividades() {
         initComponents();
         setOpaque(false);
         jLabel1.putClientProperty( "FlatLaf.styleClass", "h1" );
@@ -33,9 +36,9 @@ public class Usuarios extends javax.swing.JPanel {
     }
     
     //Singleton
-    public static Usuarios getInstance(){
+    public static AgendaActividades getInstance(){
         if(instance == null){
-            instance = new Usuarios();
+            instance = new AgendaActividades();
         }
         return instance;
     }
@@ -50,8 +53,6 @@ public class Usuarios extends javax.swing.JPanel {
     private void initComponents() {
 
         roundPanel1 = new custom.RoundPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -69,27 +70,19 @@ public class Usuarios extends javax.swing.JPanel {
         roundPanel3 = new custom.RoundPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(0, 204, 0));
         setOpaque(false);
 
         roundPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nombre", "Apellido pa.", "Apellido ma.", "Dirección", "Fecha na.", "Correo", "Telefono", "Genero", "Rol", "Usuario"
-            }
-        ));
-        jScrollPane1.setViewportView(tabla);
-
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
         jPanel3.setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Usuarios");
+        jLabel1.setText("Agenda de actividades");
 
         jPanel1.setOpaque(false);
 
@@ -289,16 +282,26 @@ public class Usuarios extends javax.swing.JPanel {
             .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id", "Fecha", "Descripcion", "Prioridad"
+            }
+        ));
+        jScrollPane1.setViewportView(tabla);
+
         javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
         roundPanel1.setLayout(roundPanel1Layout);
         roundPanel1Layout.setHorizontalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel1Layout.createSequentialGroup()
+            .addGroup(roundPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         roundPanel1Layout.setVerticalGroup(
@@ -308,8 +311,8 @@ public class Usuarios extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -334,12 +337,12 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new RegistrarUsuarios(this).setVisible(true);
+        new AgregarActividad(this).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
-        new ModificarUsuarios(id, this).setVisible(true);
+        new ModificarActividad(id, this).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -384,16 +387,16 @@ public class Usuarios extends javax.swing.JPanel {
 
             JPAController jpa = new JPAController();
 
-            List<Usuario> listUsuarios =  jpa.getListaUsuarios();
+            List<Agendaactividades> listAgendaactividades =  jpa.getListAgendaactividades();
+        
+            for (Agendaactividades agenda : listAgendaactividades) {
 
-            for (Usuario usuario : listUsuarios) {
-
-                dtm.addRow(usuario.toArray());
+                dtm.addRow(agenda.toArray());
             }
 
             tabla.setModel(dtm);
             
-            lblRegistrados.setText("Registrados: " + jpa.conteoDeUsuario());
+            //lblRegistrados.setText("Registrados: " + jpa.conteoDeUsuario());
         } catch (Exception e) {
             System.out.println("error: " + e.getMessage());
         }
@@ -402,11 +405,15 @@ public class Usuarios extends javax.swing.JPanel {
     private void eliminar() {
         Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
         JPAController cp = new JPAController();
-        int op = JOptionPane.showConfirmDialog(null, "desea eliminar el usuario con el id: "+ id);
+        int op = JOptionPane.showConfirmDialog(null, "desea la actividad con el id: "+ id);
         if(op==JOptionPane.OK_OPTION){
-            cp.eliminarUsuario(id);
-            JOptionPane.showMessageDialog(null, "se elimino exitosamente");
-            actualizarTabla();
+            try {
+                cp.eliminaragenda(id);
+                JOptionPane.showMessageDialog(null, "se elimino exitosamente");
+                actualizarTabla();
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(AgendaActividades.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

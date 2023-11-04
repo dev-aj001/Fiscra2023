@@ -11,9 +11,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import jpa.exceptions.IllegalOrphanException;
 import jpa.exceptions.NonexistentEntityException;
-import modelos.Expediente;
-import modelos.ExpedientePK;
+import modelos.Agendaactividades;
+import modelos.Agendavisitas;
+import modelos.Familiar;
+//import modelos.Expediente;
+//import modelos.ExpedientePK;
 import modelos.Paciente;
+import modelos.Usuario;
 
 /**
  *
@@ -24,7 +28,98 @@ public class JPAController {
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("FiscraPU");
     
     PacienteJpaController pacienteJPA = new PacienteJpaController(emf);
-    ExpedienteJpaController expedienteJPA = new ExpedienteJpaController(emf);
+    UsuarioJpaController usuarioJPA = new UsuarioJpaController(emf);
+    AgendaactividadesJpaController agendaJPA = new AgendaactividadesJpaController(emf);
+    AgendavisitasJpaController agendavJPA = new AgendavisitasJpaController(emf);
+    FamiliarJpaController familiarJPA = new FamiliarJpaController(emf);
+    //ExpedienteJpaController expedienteJPA = new ExpedienteJpaController(emf);
+    
+    public void Agendavisitas(Agendavisitas agendaV) {
+        agendavJPA.create(agendaV);
+    }
+    
+    public void Familar (Familiar familiar) {
+        familiarJPA.create(familiar);
+    }
+    public void registraragenda(Agendaactividades agenda){
+        agendaJPA.create(agenda);
+    }
+    
+      public void eliminaragenda(Integer id) throws NonexistentEntityException{
+        agendaJPA.destroy(id);
+    }
+  
+        public void modificaragenda(Agendaactividades agenda) throws Exception{
+        agendaJPA.edit(agenda);
+    } 
+    
+    public void registaragendav(Agendavisitas agendav){
+        agendavJPA.create(agendav);
+    }
+    
+    public void modificaragendav(Agendavisitas agendav) throws Exception{
+        agendavJPA.edit(agendav);
+    }
+    
+    public void eliminaragendav(Integer id) throws NonexistentEntityException{
+        agendavJPA.destroy(id);
+    }
+    
+    public List<Agendaactividades> getListAgendaactividades(){
+        return agendaJPA.findAgendaactividadesEntities();
+        
+    }
+    
+    public List<Agendavisitas> getListAgendavisitas(){
+        return agendavJPA.findAgendavisitasEntities();
+        
+    }
+    
+    public int getCountAgendaactividades(){
+        return agendaJPA.getAgendaactividadesCount();
+    }
+    
+    public int getCountAgendavisitas(){
+        return agendavJPA.getAgendavisitasCount();
+    }
+    
+    public Agendaactividades getAgendaactividades(int id){
+        return agendaJPA.findAgendaactividades(id);
+    }
+     
+     public Agendavisitas getAgendavisitas(int id){
+        return agendavJPA.findAgendavisitas(id);
+    }
+
+   
+    
+    public void registrarFamiliar(Familiar familiar){
+        familiarJPA.create(familiar);
+    }
+    
+    public void eliminarFamiliar(Integer id) throws NonexistentEntityException{
+        familiarJPA.destroy(id);
+    }
+    
+    public void modificarFamiliar(Familiar familiar) throws Exception{
+        familiarJPA.edit(familiar);
+    }    
+    
+    public List<Familiar> getListaFamiliar(){
+        return familiarJPA.findFamiliarEntities();
+    }    
+    
+    
+    public int getCountFamiliar(){
+        return familiarJPA.getFamiliarCount();
+    }
+    
+    
+    public Familiar getFamiliar(int id){
+        return familiarJPA.findFamiliar(id);
+    }
+    
+    ////////////////////
     
     public void registrarPaciente(Paciente paciente){
         try {
@@ -77,54 +172,108 @@ public class JPAController {
         }
     }
     
-    public void registrarExpediente(Expediente expediente){
+    
+    public void registrarUsuario(Usuario usuario){
         try {
-            expedienteJPA.create(expediente);
+            usuarioJPA.create(usuario);
         } catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
         }
     }
     
-    public void eliminarExpediente(ExpedientePK id){
+    public void eliminarUsuario(Integer id){
         try {
-            expedienteJPA.destroy(id);
+            usuarioJPA.destroy(id);
         } catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
         }
     }
     
-    public void modificarExpediente(Expediente expediente){
+    public void modificarUsuario(Usuario usuario){
         try {
-            expedienteJPA.edit(expediente);
+            usuarioJPA.edit(usuario);
         } catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
         }
     }
     
-    public int conteoDeExpedientes(){
+    public int conteoDeUsuario(){
         try {
-            return expedienteJPA.getExpedienteCount();
+            return usuarioJPA.getUsuarioCount();
         } catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
             return 0;
         }
     }
     
-    public List<Expediente> getListaExpedientes(){
+    public List<Usuario> getListaUsuarios(){
         try {
-            return expedienteJPA.findExpedienteEntities();
+            return usuarioJPA.findUsuarioEntities();
         } catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
             return null;
         }
     }
     
-    public Expediente getExpediente(ExpedientePK id){
+    public Usuario getUsuario(int id){
         try {
-            return expedienteJPA.findExpediente(id);
+            return usuarioJPA.findUsuario(id);
         } catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
             return null;
         }
     }
+    
+    
+    
+//    public void registrarExpediente(Expediente expediente){
+//        try {
+//            expedienteJPA.create(expediente);
+//        } catch (Exception ex) {
+//            System.out.println("error: " + ex.getMessage());
+//        }
+//    }
+//    
+//    public void eliminarExpediente(ExpedientePK id){
+//        try {
+//            expedienteJPA.destroy(id);
+//        } catch (Exception ex) {
+//            System.out.println("error: " + ex.getMessage());
+//        }
+//    }
+//    
+//    public void modificarExpediente(Expediente expediente){
+//        try {
+//            expedienteJPA.edit(expediente);
+//        } catch (Exception ex) {
+//            System.out.println("error: " + ex.getMessage());
+//        }
+//    }
+//    
+//    public int conteoDeExpedientes(){
+//        try {
+//            return expedienteJPA.getExpedienteCount();
+//        } catch (Exception ex) {
+//            System.out.println("error: " + ex.getMessage());
+//            return 0;
+//        }
+//    }
+//    
+//    public List<Expediente> getListaExpedientes(){
+//        try {
+//            return expedienteJPA.findExpedienteEntities();
+//        } catch (Exception ex) {
+//            System.out.println("error: " + ex.getMessage());
+//            return null;
+//        }
+//    }
+//    
+//    public Expediente getExpediente(ExpedientePK id){
+//        try {
+//            return expedienteJPA.findExpediente(id);
+//        } catch (Exception ex) {
+//            System.out.println("error: " + ex.getMessage());
+//            return null;
+//        }
+//    }
 }

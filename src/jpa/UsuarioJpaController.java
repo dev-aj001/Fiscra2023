@@ -13,15 +13,15 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import jpa.exceptions.NonexistentEntityException;
-import modelos.Paciente;
+import modelos.Usuario;
 
 /**
  *
  * @author jairi
  */
-public class PacienteJpaController implements Serializable {
+public class UsuarioJpaController implements Serializable {
 
-    public PacienteJpaController(EntityManagerFactory emf) {
+    public UsuarioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -30,12 +30,12 @@ public class PacienteJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Paciente paciente) {
+    public void create(Usuario usuario) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(paciente);
+            em.persist(usuario);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -44,19 +44,19 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
-    public void edit(Paciente paciente) throws NonexistentEntityException, Exception {
+    public void edit(Usuario usuario) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            paciente = em.merge(paciente);
+            usuario = em.merge(usuario);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = paciente.getIdPaciente();
-                if (findPaciente(id) == null) {
-                    throw new NonexistentEntityException("The paciente with id " + id + " no longer exists.");
+                Integer id = usuario.getIdUsuarios();
+                if (findUsuario(id) == null) {
+                    throw new NonexistentEntityException("The usuario with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -72,14 +72,14 @@ public class PacienteJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Paciente paciente;
+            Usuario usuario;
             try {
-                paciente = em.getReference(Paciente.class, id);
-                paciente.getIdPaciente();
+                usuario = em.getReference(Usuario.class, id);
+                usuario.getIdUsuarios();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The paciente with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The usuario with id " + id + " no longer exists.", enfe);
             }
-            em.remove(paciente);
+            em.remove(usuario);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -88,19 +88,19 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
-    public List<Paciente> findPacienteEntities() {
-        return findPacienteEntities(true, -1, -1);
+    public List<Usuario> findUsuarioEntities() {
+        return findUsuarioEntities(true, -1, -1);
     }
 
-    public List<Paciente> findPacienteEntities(int maxResults, int firstResult) {
-        return findPacienteEntities(false, maxResults, firstResult);
+    public List<Usuario> findUsuarioEntities(int maxResults, int firstResult) {
+        return findUsuarioEntities(false, maxResults, firstResult);
     }
 
-    private List<Paciente> findPacienteEntities(boolean all, int maxResults, int firstResult) {
+    private List<Usuario> findUsuarioEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Paciente.class));
+            cq.select(cq.from(Usuario.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -112,20 +112,20 @@ public class PacienteJpaController implements Serializable {
         }
     }
 
-    public Paciente findPaciente(Integer id) {
+    public Usuario findUsuario(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Paciente.class, id);
+            return em.find(Usuario.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getPacienteCount() {
+    public int getUsuarioCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Paciente> rt = cq.from(Paciente.class);
+            Root<Usuario> rt = cq.from(Usuario.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

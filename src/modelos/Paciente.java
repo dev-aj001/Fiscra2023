@@ -5,9 +5,9 @@
 package modelos;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +15,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,7 +30,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Paciente.findByIdPaciente", query = "SELECT p FROM Paciente p WHERE p.idPaciente = :idPaciente"),
     @NamedQuery(name = "Paciente.findByNombre", query = "SELECT p FROM Paciente p WHERE p.nombre = :nombre"),
     @NamedQuery(name = "Paciente.findByApellidoPa", query = "SELECT p FROM Paciente p WHERE p.apellidoPa = :apellidoPa"),
-    @NamedQuery(name = "Paciente.findByApellidoMa", query = "SELECT p FROM Paciente p WHERE p.apellidoMa = :apellidoMa")})
+    @NamedQuery(name = "Paciente.findByApellidoMa", query = "SELECT p FROM Paciente p WHERE p.apellidoMa = :apellidoMa"),
+    @NamedQuery(name = "Paciente.findByFechaNac", query = "SELECT p FROM Paciente p WHERE p.fechaNac = :fechaNac"),
+    @NamedQuery(name = "Paciente.findByEstado", query = "SELECT p FROM Paciente p WHERE p.estado = :estado")})
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,8 +47,11 @@ public class Paciente implements Serializable {
     private String apellidoPa;
     @Column(name = "apellidoMa")
     private String apellidoMa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
-    private Collection<Expediente> expedienteCollection;
+    @Column(name = "fechaNac")
+    @Temporal(TemporalType.DATE)
+    private Date fechaNac;
+    @Column(name = "estado")
+    private String estado;
 
     public Paciente() {
     }
@@ -86,12 +92,20 @@ public class Paciente implements Serializable {
         this.apellidoMa = apellidoMa;
     }
 
-    public Collection<Expediente> getExpedienteCollection() {
-        return expedienteCollection;
+    public Date getFechaNac() {
+        return fechaNac;
     }
 
-    public void setExpedienteCollection(Collection<Expediente> expedienteCollection) {
-        this.expedienteCollection = expedienteCollection;
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
@@ -116,11 +130,16 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "custom.Paciente[ idPaciente=" + idPaciente + " ]";
+        return "modelos.Paciente[ idPaciente=" + idPaciente + " ]";
+    }
+    
+    private String getFormatedDate(){
+        SimpleDateFormat formato = new SimpleDateFormat("dd MMMM yyyy");
+
+        return formato.format(getFechaNac());
     }
     
     public Object[] toArray(){
-        return new Object[]{this.getIdPaciente(), this.getApellidoPa(), this.getApellidoMa(), this.getExpedienteCollection().size()};
+        return new Object[]{this.getIdPaciente(), this.nombre, this.getApellidoPa(), this.getApellidoMa(), getFormatedDate()};
     }
-    
 }
