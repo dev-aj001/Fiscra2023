@@ -10,6 +10,7 @@ import custom.Icons;
 import custom.userData;
 import forms.AgendaActividades;
 import forms.AgendaVisitas;
+import forms.Calendario;
 import forms.Expedientes;
 import forms.Finanzas;
 import forms.Pacientes;
@@ -304,7 +305,10 @@ public class GerenteMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        screenPnl.removeAll();
+        screenPnl.add(Calendario.getInstance());
+        screenPnl.revalidate();
+        screenPnl.repaint();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
