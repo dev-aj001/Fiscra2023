@@ -7,6 +7,9 @@
     <class>modelos.Familiar</class>
     <class>modelos.Agendavisitas</class>
     <class>modelos.Agendaactividades</class>
+    <class>modelos.Finanza</class>
+    <class>modelos.Registro</class>
+    <class>modelos.Expediente</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/impostor?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

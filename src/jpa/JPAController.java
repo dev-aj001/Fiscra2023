@@ -14,6 +14,7 @@ import jpa.exceptions.NonexistentEntityException;
 import modelos.Agendaactividades;
 import modelos.Agendavisitas;
 import modelos.Familiar;
+import modelos.Finanza;
 //import modelos.Expediente;
 //import modelos.ExpedientePK;
 import modelos.Paciente;
@@ -32,6 +33,8 @@ public class JPAController {
     AgendaactividadesJpaController agendaJPA = new AgendaactividadesJpaController(emf);
     AgendavisitasJpaController agendavJPA = new AgendavisitasJpaController(emf);
     FamiliarJpaController familiarJPA = new FamiliarJpaController(emf);
+    FinanzaJpaController finanzaJPA = new FinanzaJpaController(emf);
+    
     //ExpedienteJpaController expedienteJPA = new ExpedienteJpaController(emf);
     
     public void Agendavisitas(Agendavisitas agendaV) {
@@ -66,13 +69,16 @@ public class JPAController {
     }
     
     public List<Agendaactividades> getListAgendaactividades(){
-        return agendaJPA.findAgendaactividadesEntities();
-        
+        return agendaJPA.findAgendaactividadesEntities();  
     }
     
     public List<Agendavisitas> getListAgendavisitas(){
         return agendavJPA.findAgendavisitasEntities();
         
+    }
+    
+    public List<Finanza> getListFinanzas(){
+        return finanzaJPA.findFinanzaEntities();
     }
     
     public int getCountAgendaactividades(){

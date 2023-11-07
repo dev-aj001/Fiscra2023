@@ -13,16 +13,16 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import jpa.exceptions.NonexistentEntityException;
-import modelos.Agendavisitas;
+import modelos.Expediente;
 import modelos.Paciente;
 
 /**
  *
  * @author jairi
  */
-public class AgendavisitasJpaController implements Serializable {
+public class ExpedienteJpaController implements Serializable {
 
-    public AgendavisitasJpaController(EntityManagerFactory emf) {
+    public ExpedienteJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,19 +31,19 @@ public class AgendavisitasJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Agendavisitas agendavisitas) {
+    public void create(Expediente expediente) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Paciente pacienteidPaciente = agendavisitas.getPacienteidPaciente();
+            Paciente pacienteidPaciente = expediente.getPacienteidPaciente();
             if (pacienteidPaciente != null) {
                 pacienteidPaciente = em.getReference(pacienteidPaciente.getClass(), pacienteidPaciente.getIdPaciente());
-                agendavisitas.setPacienteidPaciente(pacienteidPaciente);
+                expediente.setPacienteidPaciente(pacienteidPaciente);
             }
-            em.persist(agendavisitas);
+            em.persist(expediente);
             if (pacienteidPaciente != null) {
-                pacienteidPaciente.getAgendavisitasList().add(agendavisitas);
+                pacienteidPaciente.getExpedienteList().add(expediente);
                 pacienteidPaciente = em.merge(pacienteidPaciente);
             }
             em.getTransaction().commit();
@@ -54,34 +54,34 @@ public class AgendavisitasJpaController implements Serializable {
         }
     }
 
-    public void edit(Agendavisitas agendavisitas) throws NonexistentEntityException, Exception {
+    public void edit(Expediente expediente) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Agendavisitas persistentAgendavisitas = em.find(Agendavisitas.class, agendavisitas.getIdAgendaVisitas());
-            Paciente pacienteidPacienteOld = persistentAgendavisitas.getPacienteidPaciente();
-            Paciente pacienteidPacienteNew = agendavisitas.getPacienteidPaciente();
+            Expediente persistentExpediente = em.find(Expediente.class, expediente.getIdExpediente());
+            Paciente pacienteidPacienteOld = persistentExpediente.getPacienteidPaciente();
+            Paciente pacienteidPacienteNew = expediente.getPacienteidPaciente();
             if (pacienteidPacienteNew != null) {
                 pacienteidPacienteNew = em.getReference(pacienteidPacienteNew.getClass(), pacienteidPacienteNew.getIdPaciente());
-                agendavisitas.setPacienteidPaciente(pacienteidPacienteNew);
+                expediente.setPacienteidPaciente(pacienteidPacienteNew);
             }
-            agendavisitas = em.merge(agendavisitas);
+            expediente = em.merge(expediente);
             if (pacienteidPacienteOld != null && !pacienteidPacienteOld.equals(pacienteidPacienteNew)) {
-                pacienteidPacienteOld.getAgendavisitasList().remove(agendavisitas);
+                pacienteidPacienteOld.getExpedienteList().remove(expediente);
                 pacienteidPacienteOld = em.merge(pacienteidPacienteOld);
             }
             if (pacienteidPacienteNew != null && !pacienteidPacienteNew.equals(pacienteidPacienteOld)) {
-                pacienteidPacienteNew.getAgendavisitasList().add(agendavisitas);
+                pacienteidPacienteNew.getExpedienteList().add(expediente);
                 pacienteidPacienteNew = em.merge(pacienteidPacienteNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = agendavisitas.getIdAgendaVisitas();
-                if (findAgendavisitas(id) == null) {
-                    throw new NonexistentEntityException("The agendavisitas with id " + id + " no longer exists.");
+                Integer id = expediente.getIdExpediente();
+                if (findExpediente(id) == null) {
+                    throw new NonexistentEntityException("The expediente with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -97,19 +97,19 @@ public class AgendavisitasJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Agendavisitas agendavisitas;
+            Expediente expediente;
             try {
-                agendavisitas = em.getReference(Agendavisitas.class, id);
-                agendavisitas.getIdAgendaVisitas();
+                expediente = em.getReference(Expediente.class, id);
+                expediente.getIdExpediente();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The agendavisitas with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The expediente with id " + id + " no longer exists.", enfe);
             }
-            Paciente pacienteidPaciente = agendavisitas.getPacienteidPaciente();
+            Paciente pacienteidPaciente = expediente.getPacienteidPaciente();
             if (pacienteidPaciente != null) {
-                pacienteidPaciente.getAgendavisitasList().remove(agendavisitas);
+                pacienteidPaciente.getExpedienteList().remove(expediente);
                 pacienteidPaciente = em.merge(pacienteidPaciente);
             }
-            em.remove(agendavisitas);
+            em.remove(expediente);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -118,19 +118,19 @@ public class AgendavisitasJpaController implements Serializable {
         }
     }
 
-    public List<Agendavisitas> findAgendavisitasEntities() {
-        return findAgendavisitasEntities(true, -1, -1);
+    public List<Expediente> findExpedienteEntities() {
+        return findExpedienteEntities(true, -1, -1);
     }
 
-    public List<Agendavisitas> findAgendavisitasEntities(int maxResults, int firstResult) {
-        return findAgendavisitasEntities(false, maxResults, firstResult);
+    public List<Expediente> findExpedienteEntities(int maxResults, int firstResult) {
+        return findExpedienteEntities(false, maxResults, firstResult);
     }
 
-    private List<Agendavisitas> findAgendavisitasEntities(boolean all, int maxResults, int firstResult) {
+    private List<Expediente> findExpedienteEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Agendavisitas.class));
+            cq.select(cq.from(Expediente.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -142,20 +142,20 @@ public class AgendavisitasJpaController implements Serializable {
         }
     }
 
-    public Agendavisitas findAgendavisitas(Integer id) {
+    public Expediente findExpediente(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Agendavisitas.class, id);
+            return em.find(Expediente.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getAgendavisitasCount() {
+    public int getExpedienteCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Agendavisitas> rt = cq.from(Agendavisitas.class);
+            Root<Expediente> rt = cq.from(Expediente.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

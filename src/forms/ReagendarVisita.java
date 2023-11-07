@@ -158,7 +158,7 @@ public class ReagendarVisita extends javax.swing.JFrame {
         Agendavisitas.setIdAgendaVisitas(ID);
         Agendavisitas.setFehca(dateChooser.getDate());
         Agendavisitas.setDescripcion(txtDesc.getText());
-        Agendavisitas.setAgendaVisitascol(txtAsunto.getText());
+        //Agendavisitas.setAgendaVisitascol(txtAsunto.getText());
          //Agendavisitas.setIdPaciente(Integer.parseInt(txtidpaciente.getText()));
        
         
@@ -229,7 +229,7 @@ public class ReagendarVisita extends javax.swing.JFrame {
         Agendavisitas pa = cp.getAgendavisitas(ID);
         txtDesc.setText(pa.getDescripcion());
         dateChooser.setDate(pa.getFehca());
-        txtAsunto.setText(pa.getAgendaVisitascol());
+        //txtAsunto.setText(pa.getAgendaVisitascol());
     }
 
 }

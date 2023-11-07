@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -28,8 +30,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Agendavisitas.findAll", query = "SELECT a FROM Agendavisitas a"),
     @NamedQuery(name = "Agendavisitas.findByIdAgendaVisitas", query = "SELECT a FROM Agendavisitas a WHERE a.idAgendaVisitas = :idAgendaVisitas"),
     @NamedQuery(name = "Agendavisitas.findByFehca", query = "SELECT a FROM Agendavisitas a WHERE a.fehca = :fehca"),
-    @NamedQuery(name = "Agendavisitas.findByDescripcion", query = "SELECT a FROM Agendavisitas a WHERE a.descripcion = :descripcion"),
-    @NamedQuery(name = "Agendavisitas.findByAgendaVisitascol", query = "SELECT a FROM Agendavisitas a WHERE a.agendaVisitascol = :agendaVisitascol")})
+    @NamedQuery(name = "Agendavisitas.findByHora", query = "SELECT a FROM Agendavisitas a WHERE a.hora = :hora"),
+    @NamedQuery(name = "Agendavisitas.findByDescripcion", query = "SELECT a FROM Agendavisitas a WHERE a.descripcion = :descripcion")})
 public class Agendavisitas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,10 +43,13 @@ public class Agendavisitas implements Serializable {
     @Column(name = "fehca")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fehca;
+    @Column(name = "hora")
+    private String hora;
     @Column(name = "descripcion")
     private String descripcion;
-    @Column(name = "AgendaVisitascol")
-    private String agendaVisitascol;
+    @JoinColumn(name = "Paciente_idPaciente", referencedColumnName = "idPaciente")
+    @ManyToOne(optional = false)
+    private Paciente pacienteidPaciente;
 
     public Agendavisitas() {
     }
@@ -69,6 +74,14 @@ public class Agendavisitas implements Serializable {
         this.fehca = fehca;
     }
 
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -77,12 +90,12 @@ public class Agendavisitas implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getAgendaVisitascol() {
-        return agendaVisitascol;
+    public Paciente getPacienteidPaciente() {
+        return pacienteidPaciente;
     }
 
-    public void setAgendaVisitascol(String agendaVisitascol) {
-        this.agendaVisitascol = agendaVisitascol;
+    public void setPacienteidPaciente(Paciente pacienteidPaciente) {
+        this.pacienteidPaciente = pacienteidPaciente;
     }
 
     @Override
@@ -111,7 +124,7 @@ public class Agendavisitas implements Serializable {
     }
     
     public Object[] toArray() {
-        return new Object[]{getIdAgendaVisitas(),getFehca(),getDescripcion(),getAgendaVisitascol()};
+        return new Object[]{getIdAgendaVisitas(),getFehca(),getHora(), getDescripcion(), getPacienteidPaciente().getIdPaciente()};
     }
     
 }

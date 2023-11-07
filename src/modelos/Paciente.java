@@ -7,7 +7,9 @@ package modelos;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -52,6 +55,14 @@ public class Paciente implements Serializable {
     private Date fechaNac;
     @Column(name = "estado")
     private String estado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteidPaciente")
+    private List<Expediente> expedienteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteidPaciente")
+    private List<Agendavisitas> agendavisitasList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteidPaciente")
+    private List<Finanza> finanzaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteidPaciente")
+    private List<Registro> registroList;
 
     public Paciente() {
     }
@@ -108,6 +119,38 @@ public class Paciente implements Serializable {
         this.estado = estado;
     }
 
+    public List<Expediente> getExpedienteList() {
+        return expedienteList;
+    }
+
+    public void setExpedienteList(List<Expediente> expedienteList) {
+        this.expedienteList = expedienteList;
+    }
+
+    public List<Agendavisitas> getAgendavisitasList() {
+        return agendavisitasList;
+    }
+
+    public void setAgendavisitasList(List<Agendavisitas> agendavisitasList) {
+        this.agendavisitasList = agendavisitasList;
+    }
+
+    public List<Finanza> getFinanzaList() {
+        return finanzaList;
+    }
+
+    public void setFinanzaList(List<Finanza> finanzaList) {
+        this.finanzaList = finanzaList;
+    }
+
+    public List<Registro> getRegistroList() {
+        return registroList;
+    }
+
+    public void setRegistroList(List<Registro> registroList) {
+        this.registroList = registroList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -142,4 +185,5 @@ public class Paciente implements Serializable {
     public Object[] toArray(){
         return new Object[]{this.getIdPaciente(), this.nombre, this.getApellidoPa(), this.getApellidoMa(), getFormatedDate()};
     }
+    
 }

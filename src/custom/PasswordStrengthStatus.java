@@ -98,7 +98,7 @@ public class PasswordStrengthStatus extends JPanel {
             super.paintComponent(g);
             int width = getWidth();
             int height = getHeight();
-            int size = (int) (height * 0.3f);
+            int size = (int) (height * 0.4f);
             Graphics2D g2 = (Graphics2D) g.create();
             FlatUIUtils.setRenderingHints(g2);
             int gap = UIScale.scale(5);
@@ -123,6 +123,8 @@ public class PasswordStrengthStatus extends JPanel {
                 g2.setColor(disableColor);
             }
             FlatUIUtils.paintComponentBackground(g2, (w + gap) * 2, y, w, size, 0, 999);
+            FlatUIUtils.paintComponentBackground(g2, (w + gap) * 3, y, w, size, 0, 999);
+            FlatUIUtils.paintComponentBackground(g2, (w + gap) * 4, y, w, size, 0, 999);
             g2.dispose();
         }
     }

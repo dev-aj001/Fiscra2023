@@ -152,7 +152,7 @@ public class AgendarVisita extends javax.swing.JFrame {
         Agendavisitas agendavisitas = new Agendavisitas(0);
         agendavisitas.setFehca(dateChooser.getDate());
         agendavisitas.setDescripcion(txtDesc.getText());
-        agendavisitas.setAgendaVisitascol(txtAsunto.getText());
+        //agendavisitas.setAgendaVisitascol(txtAsunto.getText());
         //agendavisitas.setIdPaciente(Integer.parseInt(txtidpaciente.getText()));
         
         JPAController cp = new JPAController();
