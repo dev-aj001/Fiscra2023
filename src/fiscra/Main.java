@@ -34,7 +34,7 @@ public class Main {
         System.setProperty("flatlaf.uiScale", "1.0");
         FlatLaf.registerCustomDefaultsSource("styles");
         //FlatLightLaf.setup();
-        FlatDarkLaf.setup();
+        FlatLightLaf.setup();
         new LoginFrame().setVisible(true);
     }
     

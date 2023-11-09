@@ -37,6 +37,7 @@ public class GerenteMain extends javax.swing.JFrame {
         initComponents();
         lblNombre.setText(userData.nombre);
         lblRol.setText(userData.rol);
+        
     }
 
     /**

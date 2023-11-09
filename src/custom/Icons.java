@@ -150,4 +150,8 @@ public class Icons {
         return new FlatSVGIcon(ICONS_PATH + "delete.svg");
     }
     
+    public static FlatSVGIcon pagar() {
+        return new FlatSVGIcon(ICONS_PATH + "pago.svg");
+    }
+    
 }

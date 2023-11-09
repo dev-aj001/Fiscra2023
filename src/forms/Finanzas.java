@@ -46,6 +46,11 @@ public class Finanzas extends javax.swing.JPanel {
         return instance;
     }
 
+    public DefaultTableModel getTableModel() {
+        return (DefaultTableModel) tblTablaFinanza.getModel();
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,16 +62,15 @@ public class Finanzas extends javax.swing.JPanel {
 
         roundPanel1 = new custom.RoundPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tblTablaFinanza = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        btnNuevo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnPagar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JButton();
@@ -81,7 +85,7 @@ public class Finanzas extends javax.swing.JPanel {
 
         roundPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tblTablaFinanza.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -89,7 +93,7 @@ public class Finanzas extends javax.swing.JPanel {
                 "ID", "Paciente", "Cantidad", "Atraso", "Total"
             }
         ));
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane1.setViewportView(tblTablaFinanza);
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
         jPanel3.setOpaque(false);
@@ -110,16 +114,6 @@ public class Finanzas extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setOpaque(false);
 
-        btnNuevo.setIcon(Icons.person_add());
-        btnNuevo.setText("Nuevo");
-        btnNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-
         btnEditar.setIcon(Icons.edit());
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -130,13 +124,13 @@ public class Finanzas extends javax.swing.JPanel {
             }
         });
 
-        btnEliminar.setIcon(Icons.delete());
-        btnEliminar.setText("Dar baja");
-        btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnPagar.setIcon(Icons.pagar());
+        btnPagar.setText("Pagar");
+        btnPagar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPagar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnPagarActionPerformed(evt);
             }
         });
 
@@ -144,23 +138,20 @@ public class Finanzas extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(btnPagar)
+                .addGap(18, 18, 18)
                 .addComponent(btnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEliminar)
-                .addContainerGap())
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -335,29 +326,25 @@ public class Finanzas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-//        agregar();
-    }//GEN-LAST:event_btnNuevoActionPerformed
-
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         actualizarTabla();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-//        Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
-//        new ModificarPaciente(id, this).setVisible(true);
+        Integer id = (Integer)tblTablaFinanza.getModel().getValueAt(tblTablaFinanza.getSelectedRow(), 0);
+        new ModificarFinanza(id, this).setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        eliminar();
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        Integer id = (Integer)tblTablaFinanza.getModel().getValueAt(tblTablaFinanza.getSelectedRow(), 0);
+        new AgregarPago(id, this).setVisible(true);
+    }//GEN-LAST:event_btnPagarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnPagar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -373,7 +360,7 @@ public class Finanzas extends javax.swing.JPanel {
     private custom.RoundPanel roundPanel1;
     private custom.RoundPanel roundPanel2;
     private custom.RoundPanel roundPanel3;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTable tblTablaFinanza;
     // End of variables declaration//GEN-END:variables
     
     private void setupSearch(){
@@ -405,7 +392,7 @@ public class Finanzas extends javax.swing.JPanel {
 
     public void actualizarTabla() {
         try {
-            DefaultTableModel dtm = (DefaultTableModel)tabla.getModel();
+            DefaultTableModel dtm = (DefaultTableModel)tblTablaFinanza.getModel();
             dtm.setRowCount(0);
 
             JPAController jpa = new JPAController();
@@ -415,7 +402,7 @@ public class Finanzas extends javax.swing.JPanel {
             for (Finanza finanza : listFinanzas) {
 
                 String nombre = finanza.getPacienteidPaciente().getNombre() + " " + finanza.getPacienteidPaciente().getApellidoPa();
-                Integer id = finanza.getPacienteidPaciente().getIdPaciente();
+                Integer id = finanza.getIdadeudo();
                 
                 Object[] datos = new Object[finanza.toArray().length+3];
                 
@@ -430,7 +417,7 @@ public class Finanzas extends javax.swing.JPanel {
                 dtm.addRow(datos);
             }
 
-            tabla.setModel(dtm);
+            tblTablaFinanza.setModel(dtm);
             
             lblRegistrados.setText("Registrados: " + jpa.conteoDePacientes());
         } catch (Exception e) {
@@ -438,14 +425,6 @@ public class Finanzas extends javax.swing.JPanel {
         }
     }
 
-    private void eliminar() {
-        Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
-        JPAController cp = new JPAController();
-        int op = JOptionPane.showConfirmDialog(null, "desea eliminar el paciente con el id: "+ id);
-        if(op==JOptionPane.OK_OPTION){
-            cp.eliminarPaciente(id);
-            JOptionPane.showMessageDialog(null, "se elimino exitosamente");
-            actualizarTabla();
-        }
-    }
+    
+    
 }

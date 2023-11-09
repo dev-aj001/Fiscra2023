@@ -83,7 +83,7 @@ public class AgendaVisitas extends javax.swing.JPanel {
         jPanel3.setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Agenda de visitas");
+        jLabel1.setText("Agenda de Visitas");
 
         jPanel1.setOpaque(false);
 
@@ -99,7 +99,7 @@ public class AgendaVisitas extends javax.swing.JPanel {
         jPanel2.setOpaque(false);
 
         jButton2.setIcon(Icons.person_add());
-        jButton2.setText("Nuevo");
+        jButton2.setText("Agendar");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class AgendaVisitas extends javax.swing.JPanel {
         });
 
         jButton4.setIcon(Icons.edit());
-        jButton4.setText("Editar");
+        jButton4.setText("Reagendar");
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class AgendaVisitas extends javax.swing.JPanel {
         });
 
         jButton5.setIcon(Icons.delete());
-        jButton5.setText("Eliminar");
+        jButton5.setText("Cancelar");
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +288,7 @@ public class AgendaVisitas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "Fecha", "Descripcion", "Agendavisitascol"
+                "Id visita", "Fecha", "Hora", "Descripcion", "Id paciente"
             }
         ));
         jScrollPane1.setViewportView(tabla);

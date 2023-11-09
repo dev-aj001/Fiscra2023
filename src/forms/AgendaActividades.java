@@ -93,6 +93,11 @@ public class AgendaActividades extends javax.swing.JPanel {
         });
 
         jButton1.setIcon(Icons.search());
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setOpaque(false);
@@ -151,7 +156,7 @@ public class AgendaActividades extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "ID", "Nombre", "Apellidos" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "ID", "Fecha" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -348,6 +353,29 @@ public class AgendaActividades extends javax.swing.JPanel {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         eliminar();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String  buscar = jTextField1.getText();
+      Integer combo = jComboBox1.getSelectedIndex();
+      DefaultTableModel dtm = (DefaultTableModel)tabla.getModel();
+      dtm.setRowCount(0);
+
+      JPAController jpa = new JPAController();
+
+        List<Agendaactividades> listA = jpa.getListAgendaactividades();
+        for (Agendaactividades actividad : listA) {
+            if(combo == 0){
+                  dtm.addRow(actividad.toArray());
+            }
+            if(combo == 1 && actividad.getIdAgendaActividades()==(Integer.parseInt(buscar))){
+                  dtm.addRow(actividad.toArray());
+            }
+            if(combo == 2 && actividad.getFecha().getDate()==(Integer.parseInt(buscar))){
+                dtm.addRow(actividad.toArray());
+            }
+        }
+            tabla.setModel(dtm);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

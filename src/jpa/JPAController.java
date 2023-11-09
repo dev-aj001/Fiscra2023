@@ -13,6 +13,7 @@ import jpa.exceptions.IllegalOrphanException;
 import jpa.exceptions.NonexistentEntityException;
 import modelos.Agendaactividades;
 import modelos.Agendavisitas;
+import modelos.Expediente;
 import modelos.Familiar;
 import modelos.Finanza;
 //import modelos.Expediente;
@@ -34,8 +35,29 @@ public class JPAController {
     AgendavisitasJpaController agendavJPA = new AgendavisitasJpaController(emf);
     FamiliarJpaController familiarJPA = new FamiliarJpaController(emf);
     FinanzaJpaController finanzaJPA = new FinanzaJpaController(emf);
+    ExpedienteJpaController expedienteJPA = new ExpedienteJpaController(emf);
     
     //ExpedienteJpaController expedienteJPA = new ExpedienteJpaController(emf);
+    
+    public void registrarExpediente(Expediente expediente){
+        expedienteJPA.create(expediente);
+    }
+    
+    public Expediente getExpediente(Integer id){
+        return expedienteJPA.findExpediente(id);
+    }
+    
+    public List<Expediente> getListExpedientes(){
+        return expedienteJPA.findExpedienteEntities();
+    }
+    
+    public void modificarExpediente(Expediente expediente){
+        try {
+            expedienteJPA.edit(expediente);
+        } catch (Exception ex) {
+            Logger.getLogger(JPAController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void Agendavisitas(Agendavisitas agendaV) {
         agendavJPA.create(agendaV);
@@ -48,11 +70,11 @@ public class JPAController {
         agendaJPA.create(agenda);
     }
     
-      public void eliminaragenda(Integer id) throws NonexistentEntityException{
+    public void eliminaragenda(Integer id) throws NonexistentEntityException{
         agendaJPA.destroy(id);
     }
   
-        public void modificaragenda(Agendaactividades agenda) throws Exception{
+    public void modificaragenda(Agendaactividades agenda) throws Exception{
         agendaJPA.edit(agenda);
     } 
     
@@ -282,4 +304,24 @@ public class JPAController {
 //            return null;
 //        }
 //    }
+
+    public Finanza getFinanza(int ID) {
+        return finanzaJPA.findFinanza(ID);
+    }
+
+    public void modificarFinanza(Finanza finanza) {
+        try {
+            finanzaJPA.edit(finanza);
+        } catch (Exception ex) {
+            Logger.getLogger(JPAController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void eliminarFinanza(int ID) {
+        try {
+            finanzaJPA.destroy(ID);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(JPAController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
