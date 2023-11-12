@@ -55,7 +55,7 @@ public class ModificarFinanza extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(203, 243, 240));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Modificar Couta");
@@ -109,13 +109,11 @@ public class ModificarFinanza extends javax.swing.JFrame {
             .addGroup(pnlDatos3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(pnlDatos3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatos3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCou, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCou, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlDatos3Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel24)))
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

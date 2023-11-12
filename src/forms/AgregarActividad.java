@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import modelos.Agendaactividades;
 import jpa.JPAController;
 import forms.AgendaActividades;
+import java.awt.Color;
 
 /**
  *
@@ -175,7 +176,7 @@ public class AgregarActividad extends javax.swing.JFrame {
 
         pnlDatos4.add(pnlPaciente1);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(203, 243, 240));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

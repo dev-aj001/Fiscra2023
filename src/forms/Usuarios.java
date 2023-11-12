@@ -263,6 +263,11 @@ public class Usuarios extends javax.swing.JPanel {
         );
 
         jButton6.setIcon(Icons.filter_alt());
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -338,13 +343,21 @@ public class Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+        try {
+            Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
         new ModificarUsuarios(id, this).setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Porfavor seleccione un usuario en la tabla");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         eliminar();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

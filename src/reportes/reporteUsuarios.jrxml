@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteUsuarios" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8108e749-6040-4068-a6f4-7afb23e49f23">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Nombre_paciente" class="java.lang.String"/>
+	<field name="Nombre_familiar" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="80" height="80" uuid="7732aaf3-a9b9-4cd5-a1a4-60ba31a99ddf"/>
+				<imageExpression><![CDATA["https://scontent-hou1-1.xx.fbcdn.net/v/t39.30808-6/302191593_494764729323275_7375119824122484619_n.png?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHFMHsj0DuP0YA8C7Gc4LYzqnJZXUMLsnCqclldQwuycDk3jfVSy8dWwtvuwfSzXCJkfpRzmTJdxioc-CbOveQm&_nc_ohc=nqFogXWCYSQAX8hM58y&_nc_ht=scontent-hou1-1.xx&oh=00_AfB1RlZHZGH1JRRB1kIRptMNTgBV28nki4VB-stDYYPEug&oe=6555E08B"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="150" y="0" width="260" height="80" uuid="019f1c9e-48fc-4edf-a3ec-3bd6ec03d9d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Berlin Sans FB" size="16"/>
+				</textElement>
+				<text><![CDATA[Las Puertas A. C. Centro De Tratamiento Contra Las Adicciones]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="0" width="125" height="30" uuid="0f6496b7-cee6-4858-83bc-8d725995d929"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de impresion: ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="129" y="0" width="150" height="30" uuid="a2980e7f-962f-4ce1-8c2e-e55a7768a201"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="279" y="0" width="80" height="30" uuid="1924813c-8d91-47ab-a7d6-34c17f25c8a4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="0" width="553" height="1" uuid="49bd1777-978d-4f0e-a42e-16629078888f"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="1" width="553" height="30" forecolor="#FFFFFF" backcolor="#1E207D" uuid="54dc56ba-c6c9-4ca2-b25d-c91d06db04f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de usuarios del sitema de registro Las Puertas A. C.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="0" width="100" height="30" uuid="41268aae-f1f9-4b85-bab9-627de529e594">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="714c48c4-1ad3-4d05-8748-5fc67277643e"/>
+				</reportElement>
+				<text><![CDATA[Nombre_paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="0" width="100" height="30" uuid="c8e7c045-0c4f-4514-a9b6-5e81e8b3ffba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1cca6f70-5f4a-4329-a71f-fe50bf7c2453"/>
+				</reportElement>
+				<text><![CDATA[Nombre_familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="484" y="0" width="100" height="30" uuid="608af936-10d6-46ff-a35d-366cb44ab338">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="736f1ffc-fdd5-4776-8a6c-ef4352ef139b"/>
+				</reportElement>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="61" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="86" y="15" width="100" height="30" uuid="31978d04-de6a-4ab4-8ab5-66f2a1b24e97">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="714c48c4-1ad3-4d05-8748-5fc67277643e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Nombre_paciente}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="259" y="23" width="100" height="30" uuid="aabcb5d0-983c-4ff4-9389-4ad693ba7b2f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1cca6f70-5f4a-4329-a71f-fe50bf7c2453"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Nombre_familiar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="10" width="100" height="30" uuid="1e5df4ca-9389-45fb-9b83-06bd85b93dee">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="736f1ffc-fdd5-4776-8a6c-ef4352ef139b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="74" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="553" height="1" uuid="9aab31fa-f097-46b0-aba4-ea3534c6bc1c"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="4" width="240" height="40" uuid="a00567dd-76a7-424b-8241-adf498aae330"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Direccion: Calle Obrerismo # 97 Infonavit El Mirador 63038 Tepic, México]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="24" width="205" height="20" uuid="d5c17b5b-a934-453f-a1e9-feeb6e42e887"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Correo Electronico: adrian.e24@hotmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="4" width="165" height="20" uuid="7878b398-0d6c-4ac7-a203-efe050d641cc"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Telefono: 311 267 6415 ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
