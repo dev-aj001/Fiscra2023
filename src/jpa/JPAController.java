@@ -47,6 +47,18 @@ public class JPAController {
         return expedienteJPA.findExpediente(id);
     }
     
+    public Expediente getExpedienteWherePaciente(Integer id){
+        
+        List<Expediente> listExp = getListExpedientes();
+        
+        for (Expediente expediente : listExp) {
+            if(id==expediente.getPacienteidPaciente().getIdPaciente())
+                return expediente;
+        }
+        
+        return null;
+    }
+    
     public List<Expediente> getListExpedientes(){
         return expedienteJPA.findExpedienteEntities();
     }

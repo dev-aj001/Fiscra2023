@@ -5,6 +5,7 @@
 package modelos;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,6 +32,12 @@ import javax.persistence.Table;
     @NamedQuery(name = "Finanza.findByCuota", query = "SELECT f FROM Finanza f WHERE f.cuota = :cuota"),
     @NamedQuery(name = "Finanza.findByAtraso", query = "SELECT f FROM Finanza f WHERE f.atraso = :atraso")})
 public class Finanza implements Serializable {
+
+    @Column(name = "estado")
+    private String estado;
+    @Column(name = "proximoPago")
+    @Temporal(TemporalType.DATE)
+    private Date proximoPago;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -111,6 +120,22 @@ public class Finanza implements Serializable {
     
     public Object[] toArray(){
         return new Object[] {getCuota(), getAtraso()};
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Date getProximoPago() {
+        return proximoPago;
+    }
+
+    public void setProximoPago(Date proximoPago) {
+        this.proximoPago = proximoPago;
     }
     
 }

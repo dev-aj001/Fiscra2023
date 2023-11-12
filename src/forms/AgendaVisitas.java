@@ -288,7 +288,7 @@ public class AgendaVisitas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id visita", "Fecha", "Hora", "Descripcion", "Id paciente"
+                "ID", "Titulo", "Descripción", "Fecha", "Hora", "Paciente", "Familiar", "Estado"
             }
         ));
         jScrollPane1.setViewportView(tabla);

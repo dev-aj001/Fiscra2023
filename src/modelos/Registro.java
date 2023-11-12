@@ -134,5 +134,4 @@ public class Registro implements Serializable {
     public String toString() {
         return "modelos.Registro[ idregistros=" + idregistros + " ]";
     }
-    
 }

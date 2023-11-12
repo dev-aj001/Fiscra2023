@@ -6,6 +6,7 @@ package forms;
 
 
 import custom.Icons;
+import java.awt.Color;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -30,7 +31,10 @@ public class Calendario extends javax.swing.JPanel {
     private Calendario() {
         initComponents();
         setOpaque(false);
-        
+        Date d = new Date();
+        d.setDate(25);
+        System.out.println("d." + d.toString());
+        customCalen2.addActivityDate(d);
         
     }
     
@@ -61,6 +65,7 @@ public class Calendario extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        customCalen2 = new custom.CustomCalen();
 
         setBackground(new java.awt.Color(0, 204, 0));
         setOpaque(false);
@@ -112,7 +117,7 @@ public class Calendario extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(8, 8, 8)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -129,7 +134,9 @@ public class Calendario extends javax.swing.JPanel {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(roundPanel1Layout.createSequentialGroup()
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(customCalen2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -144,6 +151,8 @@ public class Calendario extends javax.swing.JPanel {
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(roundPanel1Layout.createSequentialGroup()
                         .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(customCalen2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
 
@@ -178,8 +187,8 @@ public class Calendario extends javax.swing.JPanel {
 
         List<Agendavisitas> listV =jpa.getListAgendavisitas();
         for (Agendavisitas visita : listV) {
-            System.out.println("fecha Visita: " + visita.getFehca());
-            if(visita.getFehca().getDate()==fecha.getDate()){
+            System.out.println("fecha Visita: " + visita.getFecha());
+            if(visita.getFecha().getDate()==fecha.getDate()){
                 txtVisitas.setText(txtActividad.getText()+visita.getDescripcion()+"\n\n");
             }
         }
@@ -188,6 +197,7 @@ public class Calendario extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private custom.CustomCalen customCalen2;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

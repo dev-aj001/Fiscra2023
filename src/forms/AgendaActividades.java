@@ -292,7 +292,7 @@ public class AgendaActividades extends javax.swing.JPanel {
 
             },
             new String [] {
-                "id", "Fecha", "Descripcion", "Prioridad"
+                "id", "Titulo", "Descripcion", "Fecha", "Prioridad"
             }
         ));
         jScrollPane1.setViewportView(tabla);

@@ -27,8 +27,6 @@ import javax.persistence.Table;
     @NamedQuery(name = "Expediente.findAll", query = "SELECT e FROM Expediente e"),
     @NamedQuery(name = "Expediente.findByIdExpediente", query = "SELECT e FROM Expediente e WHERE e.idExpediente = :idExpediente"),
     @NamedQuery(name = "Expediente.findByEscolaridad", query = "SELECT e FROM Expediente e WHERE e.escolaridad = :escolaridad"),
-    @NamedQuery(name = "Expediente.findByExpedientecol1", query = "SELECT e FROM Expediente e WHERE e.expedientecol1 = :expedientecol1"),
-    @NamedQuery(name = "Expediente.findByExpedientecol", query = "SELECT e FROM Expediente e WHERE e.expedientecol = :expedientecol"),
     @NamedQuery(name = "Expediente.findByCurp", query = "SELECT e FROM Expediente e WHERE e.curp = :curp"),
     @NamedQuery(name = "Expediente.findByCalle", query = "SELECT e FROM Expediente e WHERE e.calle = :calle"),
     @NamedQuery(name = "Expediente.findByColonia", query = "SELECT e FROM Expediente e WHERE e.colonia = :colonia"),
@@ -60,6 +58,12 @@ import javax.persistence.Table;
     @NamedQuery(name = "Expediente.findByOtros", query = "SELECT e FROM Expediente e WHERE e.otros = :otros")})
 public class Expediente implements Serializable {
 
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "gastos")
+    private Double gastos;
+    @Column(name = "ingresos")
+    private Double ingresos;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,10 +72,6 @@ public class Expediente implements Serializable {
     private Integer idExpediente;
     @Column(name = "escolaridad")
     private String escolaridad;
-    @Column(name = "Expedientecol1")
-    private String expedientecol1;
-    @Column(name = "Expedientecol")
-    private String expedientecol;
     @Column(name = "CURP")
     private String curp;
     @Column(name = "calle")
@@ -116,10 +116,6 @@ public class Expediente implements Serializable {
     private String alergias;
     @Column(name = "medicamentos")
     private String medicamentos;
-    @Column(name = "gastos")
-    private String gastos;
-    @Column(name = "ingresos")
-    private String ingresos;
     @Column(name = "tipoCasa")
     private String tipoCasa;
     @Column(name = "servicios")
@@ -155,22 +151,6 @@ public class Expediente implements Serializable {
 
     public void setEscolaridad(String escolaridad) {
         this.escolaridad = escolaridad;
-    }
-
-    public String getExpedientecol1() {
-        return expedientecol1;
-    }
-
-    public void setExpedientecol1(String expedientecol1) {
-        this.expedientecol1 = expedientecol1;
-    }
-
-    public String getExpedientecol() {
-        return expedientecol;
-    }
-
-    public void setExpedientecol(String expedientecol) {
-        this.expedientecol = expedientecol;
     }
 
     public String getCurp() {
@@ -349,21 +329,6 @@ public class Expediente implements Serializable {
         this.medicamentos = medicamentos;
     }
 
-    public String getGastos() {
-        return gastos;
-    }
-
-    public void setGastos(String gastos) {
-        this.gastos = gastos;
-    }
-
-    public String getIngresos() {
-        return ingresos;
-    }
-
-    public void setIngresos(String ingresos) {
-        this.ingresos = ingresos;
-    }
 
     public String getTipoCasa() {
         return tipoCasa;
@@ -436,6 +401,22 @@ public class Expediente implements Serializable {
     @Override
     public String toString() {
         return "modelos.Expediente[ idExpediente=" + idExpediente + " ]";
+    }
+
+    public Double getGastos() {
+        return gastos;
+    }
+
+    public void setGastos(Double gastos) {
+        this.gastos = gastos;
+    }
+
+    public Double getIngresos() {
+        return ingresos;
+    }
+
+    public void setIngresos(Double ingresos) {
+        this.ingresos = ingresos;
     }
     
 }

@@ -5,6 +5,7 @@
 package modelos;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -32,6 +33,14 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Agendaactividades.findByPrioridad", query = "SELECT a FROM Agendaactividades a WHERE a.prioridad = :prioridad")})
 public class Agendaactividades implements Serializable {
 
+    @Column(name = "hora")
+    private String hora;
+
+    @Column(name = "titulo")
+    private String titulo;
+    @Column(name = "prioridad")
+    private Integer prioridad;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +52,6 @@ public class Agendaactividades implements Serializable {
     private Date fecha;
     @Column(name = "descripcion")
     private String descripcion;
-    @Column(name = "prioridad")
-    private String prioridad;
 
     public Agendaactividades() {
     }
@@ -77,13 +84,6 @@ public class Agendaactividades implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getPrioridad() {
-        return prioridad;
-    }
-
-    public void setPrioridad(String prioridad) {
-        this.prioridad = prioridad;
-    }
 
     @Override
     public int hashCode() {
@@ -111,7 +111,40 @@ public class Agendaactividades implements Serializable {
     }
     
     public Object[] toArray(){
-        return new Object[] {getIdAgendaActividades(), getFecha(), getDescripcion(), getPrioridad()};
+        return new Object[] {getIdAgendaActividades(), getTitulo(), getDescripcion(), getFormatedFecha(), getPrioridad()};
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    private String getFormatedFecha(){
+        // Crea un objeto SimpleDateFormat con el formato deseado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd 'de' MMMM 'del' yyyy");
+
+        // Convierte la fecha a un String con el formato especificado
+        return formatoFecha.format(getFecha());
+    }
+
+
+    public Integer getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(Integer prioridad) {
+        this.prioridad = prioridad;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
     
 }

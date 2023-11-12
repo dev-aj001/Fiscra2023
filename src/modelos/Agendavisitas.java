@@ -5,6 +5,7 @@
 package modelos;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -29,9 +30,12 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Agendavisitas.findAll", query = "SELECT a FROM Agendavisitas a"),
     @NamedQuery(name = "Agendavisitas.findByIdAgendaVisitas", query = "SELECT a FROM Agendavisitas a WHERE a.idAgendaVisitas = :idAgendaVisitas"),
-    @NamedQuery(name = "Agendavisitas.findByFehca", query = "SELECT a FROM Agendavisitas a WHERE a.fehca = :fehca"),
+    @NamedQuery(name = "Agendavisitas.findByTitulo", query = "SELECT a FROM Agendavisitas a WHERE a.titulo = :titulo"),
+    @NamedQuery(name = "Agendavisitas.findByDescripcion", query = "SELECT a FROM Agendavisitas a WHERE a.descripcion = :descripcion"),
+    @NamedQuery(name = "Agendavisitas.findByFecha", query = "SELECT a FROM Agendavisitas a WHERE a.fecha = :fecha"),
     @NamedQuery(name = "Agendavisitas.findByHora", query = "SELECT a FROM Agendavisitas a WHERE a.hora = :hora"),
-    @NamedQuery(name = "Agendavisitas.findByDescripcion", query = "SELECT a FROM Agendavisitas a WHERE a.descripcion = :descripcion")})
+    @NamedQuery(name = "Agendavisitas.findByVisitante", query = "SELECT a FROM Agendavisitas a WHERE a.visitante = :visitante"),
+    @NamedQuery(name = "Agendavisitas.findByEstado", query = "SELECT a FROM Agendavisitas a WHERE a.estado = :estado")})
 public class Agendavisitas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,13 +44,19 @@ public class Agendavisitas implements Serializable {
     @Basic(optional = false)
     @Column(name = "idAgendaVisitas")
     private Integer idAgendaVisitas;
-    @Column(name = "fehca")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fehca;
-    @Column(name = "hora")
-    private String hora;
+    @Column(name = "titulo")
+    private String titulo;
     @Column(name = "descripcion")
     private String descripcion;
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
+    @Column(name = "hora")
+    private String hora;
+    @Column(name = "visitante")
+    private String visitante;
+    @Column(name = "estado")
+    private String estado;
     @JoinColumn(name = "Paciente_idPaciente", referencedColumnName = "idPaciente")
     @ManyToOne(optional = false)
     private Paciente pacienteidPaciente;
@@ -66,12 +76,28 @@ public class Agendavisitas implements Serializable {
         this.idAgendaVisitas = idAgendaVisitas;
     }
 
-    public Date getFehca() {
-        return fehca;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setFehca(Date fehca) {
-        this.fehca = fehca;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getHora() {
@@ -82,12 +108,20 @@ public class Agendavisitas implements Serializable {
         this.hora = hora;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getVisitante() {
+        return visitante;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setVisitante(String visitante) {
+        this.visitante = visitante;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Paciente getPacienteidPaciente() {
@@ -124,7 +158,18 @@ public class Agendavisitas implements Serializable {
     }
     
     public Object[] toArray() {
-        return new Object[]{getIdAgendaVisitas(),getFehca(),getHora(), getDescripcion(), getPacienteidPaciente().getIdPaciente()};
+        return new Object[]{getIdAgendaVisitas(), getTitulo(),getDescripcion(),getFormatedFecha(), getHora(), getNombrePaciente(), getVisitante(), getEstado()};
     }
     
+    private String getFormatedFecha(){
+        // Crea un objeto SimpleDateFormat con el formato deseado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd 'de' MMMM 'del' yyyy");
+
+        // Convierte la fecha a un String con el formato especificado
+        return formatoFecha.format(getFecha());
+    }
+    
+    private String getNombrePaciente(){
+        return getPacienteidPaciente().getNombre();
+    }
 }
