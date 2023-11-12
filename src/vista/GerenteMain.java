@@ -37,6 +37,7 @@ public class GerenteMain extends javax.swing.JFrame {
         initComponents();
         lblNombre.setText(userData.nombre);
         lblRol.setText(userData.rol);
+        setExtendedState(MAXIMIZED_BOTH);
         
     }
 
@@ -87,9 +88,9 @@ public class GerenteMain extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
 
-        roundPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        roundPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        imagenPerfil1.setForeground(new java.awt.Color(82, 204, 255));
+        imagenPerfil1.setForeground(new java.awt.Color(255, 255, 255));
         imagenPerfil1.setBorderSize(2);
         imagenPerfil1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/img.jpg"))); // NOI18N
 

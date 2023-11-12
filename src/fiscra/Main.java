@@ -31,7 +31,7 @@ public class Main {
     public static void main(String[] args) {
         
         // TODO code application logic here
-        System.setProperty("flatlaf.uiScale", "1.0");
+        System.setProperty("flatlaf.uiScale", "1.35");
         FlatLaf.registerCustomDefaultsSource("styles");
         //FlatLightLaf.setup();
         FlatLightLaf.setup();

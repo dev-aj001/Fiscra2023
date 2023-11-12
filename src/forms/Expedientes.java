@@ -47,6 +47,7 @@ public class Expedientes extends javax.swing.JPanel {
         pnlGastos.add(pnlGastos_);
         pnlIngresos.add(pnlIngresos_);
         pnlHogar.add(pnlHogar_);
+        //txtCorreoFamiliar.putClientProperty("JComponent.outline", "error");
     }
     
     //Singleton
@@ -125,6 +126,13 @@ public class Expedientes extends javax.swing.JPanel {
         jPanel13 = new javax.swing.JPanel();
         jXLabel5 = new org.jdesktop.swingx.JXLabel();
         txtSeguro = new org.jdesktop.swingx.JXTextField();
+        jXLabel7 = new org.jdesktop.swingx.JXLabel();
+        cmbSeguro = new javax.swing.JComboBox<>();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jXLabel31 = new org.jdesktop.swingx.JXLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         pnlFamiliar = new org.jdesktop.swingx.JXPanel();
         jXTitledSeparator5 = new org.jdesktop.swingx.JXTitledSeparator();
         jPanel7 = new javax.swing.JPanel();
@@ -152,9 +160,9 @@ public class Expedientes extends javax.swing.JPanel {
         jXLabel14 = new org.jdesktop.swingx.JXLabel();
         jXLabel15 = new org.jdesktop.swingx.JXLabel();
         jXLabel16 = new org.jdesktop.swingx.JXLabel();
-        txtNumCasaFamiliar = new org.jdesktop.swingx.JXTextField();
-        txtNumCelFamiliar = new org.jdesktop.swingx.JXTextField();
         txtCorreoFamiliar = new org.jdesktop.swingx.JXTextField();
+        txtNumCasaFamiliar = new custom.FormatoNumeroTelefonico();
+        txtNumCelFamiliar = new custom.FormatoNumeroTelefonico();
         jXTitledSeparator7 = new org.jdesktop.swingx.JXTitledSeparator();
         pnlMedico2 = new org.jdesktop.swingx.JXPanel();
         jXTitledSeparator14 = new org.jdesktop.swingx.JXTitledSeparator();
@@ -561,7 +569,19 @@ public class Expedientes extends javax.swing.JPanel {
 
         jPanel13.setOpaque(false);
 
-        jXLabel5.setText("Seguro con el que cuenta:");
+        jXLabel5.setText("Seguro medico:");
+
+        jXLabel7.setText("Otro (especificar si otro):");
+
+        cmbSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Ninguno-", "Instituto Mexicano del Seguro Social (IMSS)", "Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE)", "Seguro Popular", "Instituto de Salud para el Bienestar (INSABI)", "Seguros médicos privados", "Otro" }));
+
+        jCheckBox1.setText("Seguro de Vida");
+
+        jCheckBox2.setText("Seguro de Auto");
+
+        jCheckBox3.setText("Seguro de Hogar");
+
+        jXLabel31.setText("Otros tipos de seguro:");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -569,19 +589,50 @@ public class Expedientes extends javax.swing.JPanel {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jXLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(txtSeguro, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addComponent(jCheckBox1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox3))
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel13Layout.createSequentialGroup()
+                                    .addComponent(jXLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmbSeguro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel13Layout.createSequentialGroup()
+                                    .addComponent(jXLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jXLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jXLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jXLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox3))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlMedicoLayout = new javax.swing.GroupLayout(pnlMedico);
@@ -601,7 +652,7 @@ public class Expedientes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jXTitledSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -629,10 +680,10 @@ public class Expedientes extends javax.swing.JPanel {
                     .addComponent(jXLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtApellido1Familiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtApellido1Familiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                     .addComponent(txtNombreFamiliar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtApellido2Familiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(307, 307, 307))
+                .addGap(208, 208, 208))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -750,13 +801,13 @@ public class Expedientes extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(txtNumCasaFamiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                        .addComponent(txtNumCasaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jXLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(txtCorreoFamiliar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
-                .addComponent(txtNumCelFamiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNumCelFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -764,10 +815,10 @@ public class Expedientes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jXLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumCasaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jXLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumCasaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumCelFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCorreoFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jXLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1150,6 +1201,11 @@ public class Expedientes extends javax.swing.JPanel {
         });
 
         jButton1.setIcon(Icons.search());
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setOpaque(false);
@@ -1386,16 +1442,26 @@ public class Expedientes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JPAController jpa = new JPAController();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JComboBox<String> cmbSeguro;
     private org.jdesktop.swingx.JXDatePicker datePaciente1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -1420,6 +1486,7 @@ public class Expedientes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private org.jdesktop.swingx.JXHeader jXHeader1;
     private org.jdesktop.swingx.JXHeader jXHeader2;
@@ -1446,6 +1513,7 @@ public class Expedientes extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel29;
     private org.jdesktop.swingx.JXLabel jXLabel3;
     private org.jdesktop.swingx.JXLabel jXLabel30;
+    private org.jdesktop.swingx.JXLabel jXLabel31;
     private org.jdesktop.swingx.JXLabel jXLabel4;
     private org.jdesktop.swingx.JXLabel jXLabel43;
     private org.jdesktop.swingx.JXLabel jXLabel5;
@@ -1453,6 +1521,7 @@ public class Expedientes extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel56;
     private org.jdesktop.swingx.JXLabel jXLabel6;
     private org.jdesktop.swingx.JXLabel jXLabel67;
+    private org.jdesktop.swingx.JXLabel jXLabel7;
     private org.jdesktop.swingx.JXLabel jXLabel70;
     private org.jdesktop.swingx.JXLabel jXLabel8;
     private org.jdesktop.swingx.JXLabel jXLabel89;
@@ -1522,9 +1591,9 @@ public class Expedientes extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXTextField txtMedicamentos;
     private org.jdesktop.swingx.JXTextField txtNombreFamiliar;
     private org.jdesktop.swingx.JXTextField txtNombrePaciente;
-    private org.jdesktop.swingx.JXTextField txtNumCasaFamiliar;
+    private custom.FormatoNumeroTelefonico txtNumCasaFamiliar;
     private org.jdesktop.swingx.JXTextField txtNumCasaPaciente;
-    private org.jdesktop.swingx.JXTextField txtNumCelFamiliar;
+    private custom.FormatoNumeroTelefonico txtNumCelFamiliar;
     private org.jdesktop.swingx.JXTextField txtNumCelPaciente;
     private org.jdesktop.swingx.JXTextField txtSeguro;
     private org.jdesktop.swingx.JXTextField txtServicios;
@@ -1594,15 +1663,15 @@ public class Expedientes extends javax.swing.JPanel {
         expediente.setCodigoFam(txtCPFamiliar.getText());
         expediente.setColoniaFam(txtColoniaFamiliar.getText());
         expediente.setColonia(txtColoniaPaciente.getText());
-        expediente.setCodigo(txtCPPaciente.getText());
+//w.setCodigo(txtCPPaciente.getText());
         expediente.setEnfermedades(txtEnfermedades.getText());
         expediente.setAlergias(txtAlergias.getText());
         expediente.setMedicamentos(txtMedicamentos.getText());
         expediente.setCalleFam(txtCalleFamiliar.getText());
         expediente.setCalle(txtCallePaciente.getText());
         expediente.setTipoCasa(txtCasa.getText());
-        expediente.setGastos(txtGastos.getText());
-        expediente.setIngresos(txtIngresos.getText());
+        //expediente.setGastos(txtGastos.getText());
+        //expediente.setIngresos(txtIngresos.getText());
         expediente.setTelefonoFam(txtNumCasaFamiliar.getText());
         expediente.setTelefonoCasa(txtNumCasaPaciente.getText());
         expediente.setNombreFam(txtNombreFamiliar.getText());
@@ -1650,7 +1719,7 @@ public class Expedientes extends javax.swing.JPanel {
         txtApellido2Familiar.setText(expediente.getApellidoMaFam());
         txtCPFamiliar.setText(expediente.getCodigoFam());
         txtColoniaFamiliar.setText(expediente.getColoniaFam());
-        txtColoniaPaciente.setText(expediente.getColonia());
+        //txtColoniaPaciente.setText(wnia());
         txtCPPaciente.setText(expediente.getCodigo());
         txtEnfermedades.setText(expediente.getEnfermedades());
         txtAlergias.setText(expediente.getAlergias());
@@ -1658,8 +1727,8 @@ public class Expedientes extends javax.swing.JPanel {
         txtCalleFamiliar.setText(expediente.getCalleFam());
         txtCallePaciente.setText(expediente.getCalle());
         txtCasa.setText(expediente.getTipoCasa());
-        txtGastos.setText(expediente.getGastos());
-        txtIngresos.setText(expediente.getIngresos());
+        //txtGastos.setText(expediente.getGastos());
+        //txtIngresos.setText(expediente.getIngresos());
         txtNumCasaFamiliar.setText(expediente.getTelefonoFam());
         txtNumCasaPaciente.setText(expediente.getTelefonoCasa());
         txtNombreFamiliar.setText(expediente.getNombreFam());

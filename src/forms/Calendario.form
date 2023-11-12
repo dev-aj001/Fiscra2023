@@ -50,10 +50,7 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
-                              <Component id="customCalen2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel5" max="32767" attributes="0"/>
                       </Group>
@@ -72,8 +69,6 @@
                       <Component id="jPanel5" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="customCalen2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -175,8 +170,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Calendario de agendas"/>
           </Properties>
-        </Component>
-        <Component class="custom.CustomCalen" name="customCalen2">
         </Component>
       </SubComponents>
     </Container>

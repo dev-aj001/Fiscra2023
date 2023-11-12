@@ -781,7 +781,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jXTitledSeparator11" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanel13" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -803,9 +803,34 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="jXLabel5" min="-2" pref="167" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="txtSeguro" pref="524" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jXLabel5" min="-2" pref="167" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cmbSeguro" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jXLabel7" min="-2" pref="167" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtSeguro" min="-2" pref="547" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jXLabel31" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -814,11 +839,26 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jXLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbSeguro" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jXLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jXLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtSeguro" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="jXLabel31" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="12" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -826,10 +866,55 @@
           <SubComponents>
             <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Seguro con el que cuenta:"/>
+                <Property name="text" type="java.lang.String" value="Seguro medico:"/>
               </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXTextField" name="txtSeguro">
+            </Component>
+            <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Otro (especificar si otro):"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbSeguro">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="7">
+                    <StringItem index="0" value="-Ninguno-"/>
+                    <StringItem index="1" value="Instituto Mexicano del Seguro Social (IMSS)"/>
+                    <StringItem index="2" value="Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE)"/>
+                    <StringItem index="3" value="Seguro Popular"/>
+                    <StringItem index="4" value="Instituto de Salud para el Bienestar (INSABI)"/>
+                    <StringItem index="5" value="Seguros m&#xe9;dicos privados"/>
+                    <StringItem index="6" value="Otro"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Seguro de Vida"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Seguro de Auto"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Seguro de Hogar"/>
+              </Properties>
+            </Component>
+            <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel31">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Otros tipos de seguro:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator1">
             </Component>
           </SubComponents>
         </Container>
@@ -900,11 +985,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtApellido1Familiar" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtApellido1Familiar" alignment="1" pref="322" max="32767" attributes="0"/>
                           <Component id="txtNombreFamiliar" alignment="1" max="32767" attributes="0"/>
                           <Component id="txtApellido2Familiar" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1105,16 +1190,16 @@
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="txtNumCasaFamiliar" pref="179" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtNumCasaFamiliar" min="-2" pref="179" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jXLabel15" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtCorreoFamiliar" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="txtNumCelFamiliar" pref="178" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtNumCelFamiliar" min="-2" pref="179" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1124,11 +1209,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jXLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNumCasaFamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jXLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNumCasaFamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNumCelFamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtCorreoFamiliar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jXLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1154,11 +1239,11 @@
                 <Property name="text" type="java.lang.String" value="Numero telefonico (casa):"/>
               </Properties>
             </Component>
-            <Component class="org.jdesktop.swingx.JXTextField" name="txtNumCasaFamiliar">
-            </Component>
-            <Component class="org.jdesktop.swingx.JXTextField" name="txtNumCelFamiliar">
-            </Component>
             <Component class="org.jdesktop.swingx.JXTextField" name="txtCorreoFamiliar">
+            </Component>
+            <Component class="custom.FormatoNumeroTelefonico" name="txtNumCasaFamiliar">
+            </Component>
+            <Component class="custom.FormatoNumeroTelefonico" name="txtNumCelFamiliar">
             </Component>
           </SubComponents>
         </Container>
@@ -1829,6 +1914,9 @@
                       <Connection code="Icons.search()" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel2">
                   <Properties>
