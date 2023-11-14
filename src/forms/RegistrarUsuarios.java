@@ -496,13 +496,14 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         
         cp.registrarUsuario(usuario);      
         formus.actualizarTabla();
-        JOptionPane.showMessageDialog(null, "Se agrego usuario nuevo exitosamente");
+        JOptionPane.showMessageDialog(this, "Se agrego usuario nuevo exitosamente");
         this.dispose();
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.dispose();
+        if(JOptionPane.showConfirmDialog(this, "¿Seguro que desea cancelar el registro?")==JOptionPane.OK_OPTION)
+            this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

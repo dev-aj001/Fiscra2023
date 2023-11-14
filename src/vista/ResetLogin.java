@@ -89,7 +89,10 @@ public class ResetLogin extends JPanel{
         else{
             actualizarPass();
             JOptionPane.showMessageDialog(this, "Contraseña actualizada exitosamente!");
-            new GerenteMain().setVisible(true);
+            if(userData.rol.equals("Empleado"))
+                            new EmpleadoMain().setVisible(true);
+                        else
+                            new GerenteMain().setVisible(true);
         }
         
         

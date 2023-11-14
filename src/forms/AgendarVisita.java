@@ -68,6 +68,7 @@ public class AgendarVisita extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         pnlDatos3.setLayout(new org.jdesktop.swingx.VerticalLayout());
 
@@ -103,7 +104,7 @@ public class AgendarVisita extends javax.swing.JFrame {
                     .addGroup(pnlPacienteLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbidpaciente, 0, 255, Short.MAX_VALUE))
+                        .addComponent(cmbidpaciente, 0, 328, Short.MAX_VALUE))
                     .addComponent(jButton3))
                 .addContainerGap())
         );
@@ -132,8 +133,8 @@ public class AgendarVisita extends javax.swing.JFrame {
             .addGroup(pnlVisitanteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtVisitante, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txtVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlVisitanteLayout.setVerticalGroup(
@@ -167,9 +168,9 @@ public class AgendarVisita extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbhora, 0, 82, Short.MAX_VALUE)
+                .addComponent(cmbhora, 0, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlHoraLayout.setVerticalGroup(
@@ -207,7 +208,7 @@ public class AgendarVisita extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(pnlPaciente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtAsunto)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlPaciente1Layout.setVerticalGroup(

@@ -15,7 +15,10 @@ public class AsignarCuota extends javax.swing.JFrame {
      */
     public AsignarCuota() {
         initComponents();
+        
     }
+    
+    float diferencia = 0f;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +33,8 @@ public class AsignarCuota extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         jLabel1.setText("Asigne una cuota inicial");
 
@@ -63,6 +67,7 @@ public class AsignarCuota extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -98,6 +103,10 @@ public class AsignarCuota extends javax.swing.JFrame {
                 new AsignarCuota().setVisible(true);
             }
         });
+    }
+    
+    public void getDiferencia(float d){
+        this.diferencia = d;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

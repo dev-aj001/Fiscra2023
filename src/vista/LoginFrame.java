@@ -125,7 +125,10 @@ public class LoginFrame extends javax.swing.JFrame {
                         new ResetLoginFrame().setVisible(true);
                     }else{
                         dispose();
-                        new GerenteMain().setVisible(true);
+                        if(usuario.getRol().equals("Empleado"))
+                            new EmpleadoMain().setVisible(true);
+                        else
+                            new GerenteMain().setVisible(true);
                     }
                     
                     return;
