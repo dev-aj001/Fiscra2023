@@ -154,9 +154,9 @@ public class Calendario extends javax.swing.JPanel {
         List<Agendavisitas> listV =jpa.getListAgendavisitas();
         for (Agendavisitas visita : listV) {
             System.out.println("fecha Visita: " + visita.getFecha());
-            if(visita.getFecha().getDate()==fecha.getDate()){
-                //txtVisitas.setText(txtActividad.getText()+visita.getDescripcion()+"\n\n");
-            }
+//            if(visita.getFecha().getDate()==fecha.getDate()){
+//                //txtVisitas.setText(txtActividad.getText()+visita.getDescripcion()+"\n\n");
+//            }
         }
 
     }//GEN-LAST:event_jCalendar1PropertyChange

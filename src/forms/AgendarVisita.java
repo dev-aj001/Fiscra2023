@@ -316,7 +316,7 @@ public class AgendarVisita extends javax.swing.JFrame {
         */
         cp.registaragendav(agendavisitas);
         GV.actualizarTabla();
-        JOptionPane.showMessageDialog(null, "Se agrego una nueva visita  exitosamente");
+        JOptionPane.showMessageDialog(this, "Se agrego una nueva visita  exitosamente");
         
         this.dispose();
         
