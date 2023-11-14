@@ -342,8 +342,12 @@ public class AgendaVisitas extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
-        new ReagendarVisita(id, this).setVisible(true);
+        try {
+            Integer id = (Integer)tabla.getModel().getValueAt(tabla.getSelectedRow(), 0);
+            new ReagendarVisita(id, this).setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Porfavor seleccione una visita en la tabla");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

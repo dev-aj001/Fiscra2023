@@ -43,6 +43,10 @@ public class JPAController {
         expedienteJPA.create(expediente);
     }
     
+    public void registrarFinanza(Finanza finanza){
+        finanzaJPA.create(finanza);
+    }
+    
     public Expediente getExpediente(Integer id){
         return expedienteJPA.findExpediente(id);
     }

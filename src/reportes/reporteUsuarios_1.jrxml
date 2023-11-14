@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteUsuarios" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8108e749-6040-4068-a6f4-7afb23e49f23">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Nombre_paciente" class="java.lang.String"/>
+	<field name="Nombre_familiar" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="Declaracion1" class="java.lang.String"/>
+	<field name="Declaracion2" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="80" height="80" uuid="7732aaf3-a9b9-4cd5-a1a4-60ba31a99ddf"/>
+				<imageExpression><![CDATA["https://scontent-hou1-1.xx.fbcdn.net/v/t39.30808-6/302191593_494764729323275_7375119824122484619_n.png?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHFMHsj0DuP0YA8C7Gc4LYzqnJZXUMLsnCqclldQwuycDk3jfVSy8dWwtvuwfSzXCJkfpRzmTJdxioc-CbOveQm&_nc_ohc=nqFogXWCYSQAX8hM58y&_nc_ht=scontent-hou1-1.xx&oh=00_AfB1RlZHZGH1JRRB1kIRptMNTgBV28nki4VB-stDYYPEug&oe=6555E08B"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="150" y="0" width="260" height="80" uuid="019f1c9e-48fc-4edf-a3ec-3bd6ec03d9d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Berlin Sans FB" size="16"/>
+				</textElement>
+				<text><![CDATA[Las Puertas A. C. Centro De Tratamiento Contra Las Adicciones]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="0" width="125" height="30" uuid="0f6496b7-cee6-4858-83bc-8d725995d929"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora de impresion: ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="129" y="0" width="150" height="30" uuid="a2980e7f-962f-4ce1-8c2e-e55a7768a201"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="279" y="0" width="80" height="30" uuid="1924813c-8d91-47ab-a7d6-34c17f25c8a4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="0" width="553" height="1" uuid="49bd1777-978d-4f0e-a42e-16629078888f"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="1" width="553" height="30" forecolor="#FFFFFF" backcolor="#1E207D" uuid="54dc56ba-c6c9-4ca2-b25d-c91d06db04f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Declaración de acta de ingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="0" width="100" height="30" uuid="1361b54d-1136-4f4e-bd17-0d9bbc51fdd2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a2e79957-e832-45e5-b7ea-dc57b6828ab8"/>
+				</reportElement>
+				<text><![CDATA[Declaracion2]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="200" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="4" y="0" width="548" height="30" uuid="8e8e735e-1054-43d6-ae58-710224e7ac83">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6b1d75e-be0b-438d-bc29-6f0b4ca0dfe9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Declaracion1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="70" width="548" height="30" uuid="65df1e63-3b1b-43dd-a1ab-10b50f527a2d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a2e79957-e832-45e5-b7ea-dc57b6828ab8"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Declaracion2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="50" width="168" height="20" uuid="f47204c9-eea3-4132-bcdf-95f267dab11f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma del paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="50" width="164" height="20" uuid="c9f7fd18-9210-4cfd-b8f0-78ce9fd7a62b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma del Familiar]]></text>
+			</staticText>
+			<line>
+				<reportElement x="389" y="49" width="163" height="1" uuid="80e90d35-ebef-463a-92c6-dc4302ed87e9"/>
+			</line>
+			<line>
+				<reportElement x="9" y="49" width="163" height="1" uuid="9b5c5d4a-fd0b-478a-bbfb-0f72607c9dee"/>
+			</line>
+			<staticText>
+				<reportElement x="198" y="50" width="164" height="20" uuid="ee63ac49-7cb5-4d13-b32c-5077ed53b136"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Gerente de la clinica]]></text>
+			</staticText>
+			<line>
+				<reportElement x="198" y="49" width="163" height="1" uuid="5cc1e6ae-7bc0-46f5-99cc-42a31b450ce0"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="5" width="240" height="40" uuid="a00567dd-76a7-424b-8241-adf498aae330"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Direccion: Calle Obrerismo # 97 Infonavit El Mirador 63038 Tepic, México]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="5" width="165" height="20" uuid="7878b398-0d6c-4ac7-a203-efe050d641cc"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Telefono: 311 267 6415 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="25" width="205" height="20" uuid="d5c17b5b-a934-453f-a1e9-feeb6e42e887"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Correo Electronico: adrian.e24@hotmail.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="0" width="553" height="1" uuid="9aab31fa-f097-46b0-aba4-ea3534c6bc1c"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

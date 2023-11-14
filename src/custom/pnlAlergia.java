@@ -70,7 +70,7 @@ public class pnlAlergia extends javax.swing.JPanel {
 
     @Override
     public String toString() {
-        return tipo.getSelectedIndex() +". "+ desc.getText(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return tipo.getSelectedIndex() +"& "+ desc.getText() + "&"; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
     public JButton getBoton(){

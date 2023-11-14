@@ -26,43 +26,48 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Expediente.findAll", query = "SELECT e FROM Expediente e"),
     @NamedQuery(name = "Expediente.findByIdExpediente", query = "SELECT e FROM Expediente e WHERE e.idExpediente = :idExpediente"),
-    @NamedQuery(name = "Expediente.findByEscolaridad", query = "SELECT e FROM Expediente e WHERE e.escolaridad = :escolaridad"),
     @NamedQuery(name = "Expediente.findByCurp", query = "SELECT e FROM Expediente e WHERE e.curp = :curp"),
-    @NamedQuery(name = "Expediente.findByCalle", query = "SELECT e FROM Expediente e WHERE e.calle = :calle"),
-    @NamedQuery(name = "Expediente.findByColonia", query = "SELECT e FROM Expediente e WHERE e.colonia = :colonia"),
-    @NamedQuery(name = "Expediente.findByCodigo", query = "SELECT e FROM Expediente e WHERE e.codigo = :codigo"),
-    @NamedQuery(name = "Expediente.findByNoExterior", query = "SELECT e FROM Expediente e WHERE e.noExterior = :noExterior"),
-    @NamedQuery(name = "Expediente.findByNoInterior", query = "SELECT e FROM Expediente e WHERE e.noInterior = :noInterior"),
-    @NamedQuery(name = "Expediente.findByTelefonoCasa", query = "SELECT e FROM Expediente e WHERE e.telefonoCasa = :telefonoCasa"),
-    @NamedQuery(name = "Expediente.findByNombreFam", query = "SELECT e FROM Expediente e WHERE e.nombreFam = :nombreFam"),
-    @NamedQuery(name = "Expediente.findByApellidoPaFam", query = "SELECT e FROM Expediente e WHERE e.apellidoPaFam = :apellidoPaFam"),
-    @NamedQuery(name = "Expediente.findByApellidoMaFam", query = "SELECT e FROM Expediente e WHERE e.apellidoMaFam = :apellidoMaFam"),
-    @NamedQuery(name = "Expediente.findByTelefonoFam", query = "SELECT e FROM Expediente e WHERE e.telefonoFam = :telefonoFam"),
-    @NamedQuery(name = "Expediente.findByCorreoFam", query = "SELECT e FROM Expediente e WHERE e.correoFam = :correoFam"),
-    @NamedQuery(name = "Expediente.findByCalleFam", query = "SELECT e FROM Expediente e WHERE e.calleFam = :calleFam"),
-    @NamedQuery(name = "Expediente.findByColoniaFam", query = "SELECT e FROM Expediente e WHERE e.coloniaFam = :coloniaFam"),
-    @NamedQuery(name = "Expediente.findByCodigoFam", query = "SELECT e FROM Expediente e WHERE e.codigoFam = :codigoFam"),
-    @NamedQuery(name = "Expediente.findByLocalidad", query = "SELECT e FROM Expediente e WHERE e.localidad = :localidad"),
-    @NamedQuery(name = "Expediente.findByLocalidadFam", query = "SELECT e FROM Expediente e WHERE e.localidadFam = :localidadFam"),
+    @NamedQuery(name = "Expediente.findByCallePac", query = "SELECT e FROM Expediente e WHERE e.callePac = :callePac"),
+    @NamedQuery(name = "Expediente.findByColPac", query = "SELECT e FROM Expediente e WHERE e.colPac = :colPac"),
+    @NamedQuery(name = "Expediente.findByCodiPac", query = "SELECT e FROM Expediente e WHERE e.codiPac = :codiPac"),
+    @NamedQuery(name = "Expediente.findByNumExPac", query = "SELECT e FROM Expediente e WHERE e.numExPac = :numExPac"),
+    @NamedQuery(name = "Expediente.findByNumInPac", query = "SELECT e FROM Expediente e WHERE e.numInPac = :numInPac"),
+    @NamedQuery(name = "Expediente.findByLocaPac", query = "SELECT e FROM Expediente e WHERE e.locaPac = :locaPac"),
+    @NamedQuery(name = "Expediente.findByTelCasPac", query = "SELECT e FROM Expediente e WHERE e.telCasPac = :telCasPac"),
+    @NamedQuery(name = "Expediente.findByTelCelPac", query = "SELECT e FROM Expediente e WHERE e.telCelPac = :telCelPac"),
+    @NamedQuery(name = "Expediente.findByCorrPac", query = "SELECT e FROM Expediente e WHERE e.corrPac = :corrPac"),
+    @NamedQuery(name = "Expediente.findByNomFam", query = "SELECT e FROM Expediente e WHERE e.nomFam = :nomFam"),
+    @NamedQuery(name = "Expediente.findByApPaFam", query = "SELECT e FROM Expediente e WHERE e.apPaFam = :apPaFam"),
+    @NamedQuery(name = "Expediente.findByApMaFam", query = "SELECT e FROM Expediente e WHERE e.apMaFam = :apMaFam"),
+    @NamedQuery(name = "Expediente.findByCallFam", query = "SELECT e FROM Expediente e WHERE e.callFam = :callFam"),
+    @NamedQuery(name = "Expediente.findByColFam", query = "SELECT e FROM Expediente e WHERE e.colFam = :colFam"),
+    @NamedQuery(name = "Expediente.findByCodiFam", query = "SELECT e FROM Expediente e WHERE e.codiFam = :codiFam"),
+    @NamedQuery(name = "Expediente.findByNumExFam", query = "SELECT e FROM Expediente e WHERE e.numExFam = :numExFam"),
+    @NamedQuery(name = "Expediente.findByNumInFam", query = "SELECT e FROM Expediente e WHERE e.numInFam = :numInFam"),
+    @NamedQuery(name = "Expediente.findByLocaFam", query = "SELECT e FROM Expediente e WHERE e.locaFam = :locaFam"),
+    @NamedQuery(name = "Expediente.findByTelCasFam", query = "SELECT e FROM Expediente e WHERE e.telCasFam = :telCasFam"),
+    @NamedQuery(name = "Expediente.findByTelCelFam", query = "SELECT e FROM Expediente e WHERE e.telCelFam = :telCelFam"),
+    @NamedQuery(name = "Expediente.findByCorreFam", query = "SELECT e FROM Expediente e WHERE e.correFam = :correFam"),
     @NamedQuery(name = "Expediente.findBySeguro", query = "SELECT e FROM Expediente e WHERE e.seguro = :seguro"),
-    @NamedQuery(name = "Expediente.findBySeguro2", query = "SELECT e FROM Expediente e WHERE e.seguro2 = :seguro2"),
-    @NamedQuery(name = "Expediente.findByEnfermedades", query = "SELECT e FROM Expediente e WHERE e.enfermedades = :enfermedades"),
+    @NamedQuery(name = "Expediente.findBySeguroOtro", query = "SELECT e FROM Expediente e WHERE e.seguroOtro = :seguroOtro"),
+    @NamedQuery(name = "Expediente.findBySegAuto", query = "SELECT e FROM Expediente e WHERE e.segAuto = :segAuto"),
+    @NamedQuery(name = "Expediente.findBySegVida", query = "SELECT e FROM Expediente e WHERE e.segVida = :segVida"),
+    @NamedQuery(name = "Expediente.findBySegHogar", query = "SELECT e FROM Expediente e WHERE e.segHogar = :segHogar"),
     @NamedQuery(name = "Expediente.findByAlergias", query = "SELECT e FROM Expediente e WHERE e.alergias = :alergias"),
-    @NamedQuery(name = "Expediente.findByMedicamentos", query = "SELECT e FROM Expediente e WHERE e.medicamentos = :medicamentos"),
-    @NamedQuery(name = "Expediente.findByGastos", query = "SELECT e FROM Expediente e WHERE e.gastos = :gastos"),
-    @NamedQuery(name = "Expediente.findByIngresos", query = "SELECT e FROM Expediente e WHERE e.ingresos = :ingresos"),
-    @NamedQuery(name = "Expediente.findByTipoCasa", query = "SELECT e FROM Expediente e WHERE e.tipoCasa = :tipoCasa"),
-    @NamedQuery(name = "Expediente.findByServicios", query = "SELECT e FROM Expediente e WHERE e.servicios = :servicios"),
-    @NamedQuery(name = "Expediente.findByCaracteristicasCasa", query = "SELECT e FROM Expediente e WHERE e.caracteristicasCasa = :caracteristicasCasa"),
-    @NamedQuery(name = "Expediente.findByTransporte", query = "SELECT e FROM Expediente e WHERE e.transporte = :transporte"),
-    @NamedQuery(name = "Expediente.findByOtros", query = "SELECT e FROM Expediente e WHERE e.otros = :otros")})
+    @NamedQuery(name = "Expediente.findByEnfermedades", query = "SELECT e FROM Expediente e WHERE e.enfermedades = :enfermedades"),
+    @NamedQuery(name = "Expediente.findByTratamientos", query = "SELECT e FROM Expediente e WHERE e.tratamientos = :tratamientos"),
+    @NamedQuery(name = "Expediente.findByGastosTotal", query = "SELECT e FROM Expediente e WHERE e.gastosTotal = :gastosTotal"),
+    @NamedQuery(name = "Expediente.findByGastos1", query = "SELECT e FROM Expediente e WHERE e.gastos1 = :gastos1"),
+    @NamedQuery(name = "Expediente.findByGastos2", query = "SELECT e FROM Expediente e WHERE e.gastos2 = :gastos2"),
+    @NamedQuery(name = "Expediente.findByGastos3", query = "SELECT e FROM Expediente e WHERE e.gastos3 = :gastos3"),
+    @NamedQuery(name = "Expediente.findByGastos4", query = "SELECT e FROM Expediente e WHERE e.gastos4 = :gastos4"),
+    @NamedQuery(name = "Expediente.findByGastos5", query = "SELECT e FROM Expediente e WHERE e.gastos5 = :gastos5"),
+    @NamedQuery(name = "Expediente.findByGastos6", query = "SELECT e FROM Expediente e WHERE e.gastos6 = :gastos6"),
+    @NamedQuery(name = "Expediente.findByGastos7", query = "SELECT e FROM Expediente e WHERE e.gastos7 = :gastos7"),
+    @NamedQuery(name = "Expediente.findByIngresosTotal", query = "SELECT e FROM Expediente e WHERE e.ingresosTotal = :ingresosTotal"),
+    @NamedQuery(name = "Expediente.findByCasaTipo", query = "SELECT e FROM Expediente e WHERE e.casaTipo = :casaTipo"),
+    @NamedQuery(name = "Expediente.findByCasaServicios", query = "SELECT e FROM Expediente e WHERE e.casaServicios = :casaServicios")})
 public class Expediente implements Serializable {
-
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "gastos")
-    private Double gastos;
-    @Column(name = "ingresos")
-    private Double ingresos;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -70,62 +75,89 @@ public class Expediente implements Serializable {
     @Basic(optional = false)
     @Column(name = "idExpediente")
     private Integer idExpediente;
-    @Column(name = "escolaridad")
-    private String escolaridad;
-    @Column(name = "CURP")
+    @Column(name = "curp")
     private String curp;
-    @Column(name = "calle")
-    private String calle;
-    @Column(name = "colonia")
-    private String colonia;
-    @Column(name = "codigo")
-    private String codigo;
-    @Column(name = "noExterior")
-    private String noExterior;
-    @Column(name = "NoInterior")
-    private String noInterior;
-    @Column(name = "telefonoCasa")
-    private String telefonoCasa;
-    @Column(name = "nombreFam")
-    private String nombreFam;
-    @Column(name = "apellidoPaFam")
-    private String apellidoPaFam;
-    @Column(name = "apellidoMaFam")
-    private String apellidoMaFam;
-    @Column(name = "telefonoFam")
-    private String telefonoFam;
-    @Column(name = "correoFam")
-    private String correoFam;
-    @Column(name = "calleFam")
-    private String calleFam;
-    @Column(name = "coloniaFam")
-    private String coloniaFam;
-    @Column(name = "codigoFam")
-    private String codigoFam;
-    @Column(name = "localidad")
-    private String localidad;
-    @Column(name = "localidadFam")
-    private String localidadFam;
+    @Column(name = "callePac")
+    private String callePac;
+    @Column(name = "colPac")
+    private String colPac;
+    @Column(name = "CodiPac")
+    private String codiPac;
+    @Column(name = "numExPac")
+    private String numExPac;
+    @Column(name = "numInPac")
+    private String numInPac;
+    @Column(name = "LocaPac")
+    private String locaPac;
+    @Column(name = "telCasPac")
+    private String telCasPac;
+    @Column(name = "telCelPac")
+    private String telCelPac;
+    @Column(name = "corrPac")
+    private String corrPac;
+    @Column(name = "nomFam")
+    private String nomFam;
+    @Column(name = "apPaFam")
+    private String apPaFam;
+    @Column(name = "apMaFam")
+    private String apMaFam;
+    @Column(name = "callFam")
+    private String callFam;
+    @Column(name = "colFam")
+    private String colFam;
+    @Column(name = "codiFam")
+    private String codiFam;
+    @Column(name = "numExFam")
+    private String numExFam;
+    @Column(name = "numInFam")
+    private String numInFam;
+    @Column(name = "locaFam")
+    private String locaFam;
+    @Column(name = "telCasFam")
+    private String telCasFam;
+    @Column(name = "telCelFam")
+    private String telCelFam;
+    @Column(name = "correFam")
+    private String correFam;
     @Column(name = "seguro")
-    private String seguro;
-    @Column(name = "seguro2")
-    private String seguro2;
-    @Column(name = "enfermedades")
-    private String enfermedades;
+    private Integer seguro;
+    @Column(name = "seguroOtro")
+    private String seguroOtro;
+    @Column(name = "segAuto")
+    private Integer segAuto;
+    @Column(name = "segVida")
+    private Integer segVida;
+    @Column(name = "segHogar")
+    private Integer segHogar;
     @Column(name = "alergias")
     private String alergias;
-    @Column(name = "medicamentos")
-    private String medicamentos;
-    @Column(name = "tipoCasa")
-    private String tipoCasa;
-    @Column(name = "servicios")
-    private String servicios;
-    @Column(name = "caracteristicasCasa")
-    private String caracteristicasCasa;
-    @Column(name = "transporte")
-    private String transporte;
-    @Column(name = "otros")
-    private String otros;
+    @Column(name = "enfermedades")
+    private String enfermedades;
+    @Column(name = "tratamientos")
+    private String tratamientos;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "gastosTotal")
+    private Float gastosTotal;
+    @Column(name = "gastos1")
+    private Float gastos1;
+    @Column(name = "gastos2")
+    private Float gastos2;
+    @Column(name = "gastos3")
+    private Float gastos3;
+    @Column(name = "gastos4")
+    private Float gastos4;
+    @Column(name = "gastos5")
+    private Float gastos5;
+    @Column(name = "gastos6")
+    private Float gastos6;
+    @Column(name = "gastos7")
+    private Float gastos7;
+    @Column(name = "ingresosTotal")
+    private Float ingresosTotal;
+    @Column(name = "casaTipo")
+    private String casaTipo;
+    @Column(name = "casaServicios")
+    private String casaServicios;
     @JoinColumn(name = "Paciente_idPaciente", referencedColumnName = "idPaciente")
     @ManyToOne(optional = false)
     private Paciente pacienteidPaciente;
@@ -145,14 +177,6 @@ public class Expediente implements Serializable {
         this.idExpediente = idExpediente;
     }
 
-    public String getEscolaridad() {
-        return escolaridad;
-    }
-
-    public void setEscolaridad(String escolaridad) {
-        this.escolaridad = escolaridad;
-    }
-
     public String getCurp() {
         return curp;
     }
@@ -161,156 +185,212 @@ public class Expediente implements Serializable {
         this.curp = curp;
     }
 
-    public String getCalle() {
-        return calle;
+    public String getCallePac() {
+        return callePac;
     }
 
-    public void setCalle(String calle) {
-        this.calle = calle;
+    public void setCallePac(String callePac) {
+        this.callePac = callePac;
     }
 
-    public String getColonia() {
-        return colonia;
+    public String getColPac() {
+        return colPac;
     }
 
-    public void setColonia(String colonia) {
-        this.colonia = colonia;
+    public void setColPac(String colPac) {
+        this.colPac = colPac;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCodiPac() {
+        return codiPac;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodiPac(String codiPac) {
+        this.codiPac = codiPac;
     }
 
-    public String getNoExterior() {
-        return noExterior;
+    public String getNumExPac() {
+        return numExPac;
     }
 
-    public void setNoExterior(String noExterior) {
-        this.noExterior = noExterior;
+    public void setNumExPac(String numExPac) {
+        this.numExPac = numExPac;
     }
 
-    public String getNoInterior() {
-        return noInterior;
+    public String getNumInPac() {
+        return numInPac;
     }
 
-    public void setNoInterior(String noInterior) {
-        this.noInterior = noInterior;
+    public void setNumInPac(String numInPac) {
+        this.numInPac = numInPac;
     }
 
-    public String getTelefonoCasa() {
-        return telefonoCasa;
+    public String getLocaPac() {
+        return locaPac;
     }
 
-    public void setTelefonoCasa(String telefonoCasa) {
-        this.telefonoCasa = telefonoCasa;
+    public void setLocaPac(String locaPac) {
+        this.locaPac = locaPac;
     }
 
-    public String getNombreFam() {
-        return nombreFam;
+    public String getTelCasPac() {
+        return telCasPac;
     }
 
-    public void setNombreFam(String nombreFam) {
-        this.nombreFam = nombreFam;
+    public void setTelCasPac(String telCasPac) {
+        this.telCasPac = telCasPac;
     }
 
-    public String getApellidoPaFam() {
-        return apellidoPaFam;
+    public String getTelCelPac() {
+        return telCelPac;
     }
 
-    public void setApellidoPaFam(String apellidoPaFam) {
-        this.apellidoPaFam = apellidoPaFam;
+    public void setTelCelPac(String telCelPac) {
+        this.telCelPac = telCelPac;
     }
 
-    public String getApellidoMaFam() {
-        return apellidoMaFam;
+    public String getCorrPac() {
+        return corrPac;
     }
 
-    public void setApellidoMaFam(String apellidoMaFam) {
-        this.apellidoMaFam = apellidoMaFam;
+    public void setCorrPac(String corrPac) {
+        this.corrPac = corrPac;
     }
 
-    public String getTelefonoFam() {
-        return telefonoFam;
+    public String getNomFam() {
+        return nomFam;
     }
 
-    public void setTelefonoFam(String telefonoFam) {
-        this.telefonoFam = telefonoFam;
+    public void setNomFam(String nomFam) {
+        this.nomFam = nomFam;
     }
 
-    public String getCorreoFam() {
-        return correoFam;
+    public String getApPaFam() {
+        return apPaFam;
     }
 
-    public void setCorreoFam(String correoFam) {
-        this.correoFam = correoFam;
+    public void setApPaFam(String apPaFam) {
+        this.apPaFam = apPaFam;
     }
 
-    public String getCalleFam() {
-        return calleFam;
+    public String getApMaFam() {
+        return apMaFam;
     }
 
-    public void setCalleFam(String calleFam) {
-        this.calleFam = calleFam;
+    public void setApMaFam(String apMaFam) {
+        this.apMaFam = apMaFam;
     }
 
-    public String getColoniaFam() {
-        return coloniaFam;
+    public String getCallFam() {
+        return callFam;
     }
 
-    public void setColoniaFam(String coloniaFam) {
-        this.coloniaFam = coloniaFam;
+    public void setCallFam(String callFam) {
+        this.callFam = callFam;
     }
 
-    public String getCodigoFam() {
-        return codigoFam;
+    public String getColFam() {
+        return colFam;
     }
 
-    public void setCodigoFam(String codigoFam) {
-        this.codigoFam = codigoFam;
+    public void setColFam(String colFam) {
+        this.colFam = colFam;
     }
 
-    public String getLocalidad() {
-        return localidad;
+    public String getCodiFam() {
+        return codiFam;
     }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
+    public void setCodiFam(String codiFam) {
+        this.codiFam = codiFam;
     }
 
-    public String getLocalidadFam() {
-        return localidadFam;
+    public String getNumExFam() {
+        return numExFam;
     }
 
-    public void setLocalidadFam(String localidadFam) {
-        this.localidadFam = localidadFam;
+    public void setNumExFam(String numExFam) {
+        this.numExFam = numExFam;
     }
 
-    public String getSeguro() {
+    public String getNumInFam() {
+        return numInFam;
+    }
+
+    public void setNumInFam(String numInFam) {
+        this.numInFam = numInFam;
+    }
+
+    public String getLocaFam() {
+        return locaFam;
+    }
+
+    public void setLocaFam(String locaFam) {
+        this.locaFam = locaFam;
+    }
+
+    public String getTelCasFam() {
+        return telCasFam;
+    }
+
+    public void setTelCasFam(String telCasFam) {
+        this.telCasFam = telCasFam;
+    }
+
+    public String getTelCelFam() {
+        return telCelFam;
+    }
+
+    public void setTelCelFam(String telCelFam) {
+        this.telCelFam = telCelFam;
+    }
+
+    public String getCorreFam() {
+        return correFam;
+    }
+
+    public void setCorreFam(String correFam) {
+        this.correFam = correFam;
+    }
+
+    public Integer getSeguro() {
         return seguro;
     }
 
-    public void setSeguro(String seguro) {
+    public void setSeguro(Integer seguro) {
         this.seguro = seguro;
     }
 
-    public String getSeguro2() {
-        return seguro2;
+    public String getSeguroOtro() {
+        return seguroOtro;
     }
 
-    public void setSeguro2(String seguro2) {
-        this.seguro2 = seguro2;
+    public void setSeguroOtro(String seguroOtro) {
+        this.seguroOtro = seguroOtro;
     }
 
-    public String getEnfermedades() {
-        return enfermedades;
+    public Integer getSegAuto() {
+        return segAuto;
     }
 
-    public void setEnfermedades(String enfermedades) {
-        this.enfermedades = enfermedades;
+    public void setSegAuto(Integer segAuto) {
+        this.segAuto = segAuto;
+    }
+
+    public Integer getSegVida() {
+        return segVida;
+    }
+
+    public void setSegVida(Integer segVida) {
+        this.segVida = segVida;
+    }
+
+    public Integer getSegHogar() {
+        return segHogar;
+    }
+
+    public void setSegHogar(Integer segHogar) {
+        this.segHogar = segHogar;
     }
 
     public String getAlergias() {
@@ -321,53 +401,108 @@ public class Expediente implements Serializable {
         this.alergias = alergias;
     }
 
-    public String getMedicamentos() {
-        return medicamentos;
+    public String getEnfermedades() {
+        return enfermedades;
     }
 
-    public void setMedicamentos(String medicamentos) {
-        this.medicamentos = medicamentos;
+    public void setEnfermedades(String enfermedades) {
+        this.enfermedades = enfermedades;
     }
 
-
-    public String getTipoCasa() {
-        return tipoCasa;
+    public String getTratamientos() {
+        return tratamientos;
     }
 
-    public void setTipoCasa(String tipoCasa) {
-        this.tipoCasa = tipoCasa;
+    public void setTratamientos(String tratamientos) {
+        this.tratamientos = tratamientos;
     }
 
-    public String getServicios() {
-        return servicios;
+    public Float getGastosTotal() {
+        return gastosTotal;
     }
 
-    public void setServicios(String servicios) {
-        this.servicios = servicios;
+    public void setGastosTotal(Float gastosTotal) {
+        this.gastosTotal = gastosTotal;
     }
 
-    public String getCaracteristicasCasa() {
-        return caracteristicasCasa;
+    public Float getGastos1() {
+        return gastos1;
     }
 
-    public void setCaracteristicasCasa(String caracteristicasCasa) {
-        this.caracteristicasCasa = caracteristicasCasa;
+    public void setGastos1(Float gastos1) {
+        this.gastos1 = gastos1;
     }
 
-    public String getTransporte() {
-        return transporte;
+    public Float getGastos2() {
+        return gastos2;
     }
 
-    public void setTransporte(String transporte) {
-        this.transporte = transporte;
+    public void setGastos2(Float gastos2) {
+        this.gastos2 = gastos2;
     }
 
-    public String getOtros() {
-        return otros;
+    public Float getGastos3() {
+        return gastos3;
     }
 
-    public void setOtros(String otros) {
-        this.otros = otros;
+    public void setGastos3(Float gastos3) {
+        this.gastos3 = gastos3;
+    }
+
+    public Float getGastos4() {
+        return gastos4;
+    }
+
+    public void setGastos4(Float gastos4) {
+        this.gastos4 = gastos4;
+    }
+
+    public Float getGastos5() {
+        return gastos5;
+    }
+
+    public void setGastos5(Float gastos5) {
+        this.gastos5 = gastos5;
+    }
+
+    public Float getGastos6() {
+        return gastos6;
+    }
+
+    public void setGastos6(Float gastos6) {
+        this.gastos6 = gastos6;
+    }
+
+    public Float getGastos7() {
+        return gastos7;
+    }
+
+    public void setGastos7(Float gastos7) {
+        this.gastos7 = gastos7;
+    }
+
+    public Float getIngresosTotal() {
+        return ingresosTotal;
+    }
+
+    public void setIngresosTotal(Float ingresosTotal) {
+        this.ingresosTotal = ingresosTotal;
+    }
+
+    public String getCasaTipo() {
+        return casaTipo;
+    }
+
+    public void setCasaTipo(String casaTipo) {
+        this.casaTipo = casaTipo;
+    }
+
+    public String getCasaServicios() {
+        return casaServicios;
+    }
+
+    public void setCasaServicios(String casaServicios) {
+        this.casaServicios = casaServicios;
     }
 
     public Paciente getPacienteidPaciente() {
@@ -401,22 +536,6 @@ public class Expediente implements Serializable {
     @Override
     public String toString() {
         return "modelos.Expediente[ idExpediente=" + idExpediente + " ]";
-    }
-
-    public Double getGastos() {
-        return gastos;
-    }
-
-    public void setGastos(Double gastos) {
-        this.gastos = gastos;
-    }
-
-    public Double getIngresos() {
-        return ingresos;
-    }
-
-    public void setIngresos(Double ingresos) {
-        this.ingresos = ingresos;
     }
     
 }

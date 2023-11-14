@@ -20,7 +20,7 @@ public class report {
     public report() {
         
         try {
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/reporteUsuarios.jasper"));
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteIngreso.jasper"));
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null, DatosPrueba.getDataSource());
             
             JasperViewer view = new JasperViewer(jprint, false);

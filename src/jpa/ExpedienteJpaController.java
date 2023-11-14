@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import jpa.exceptions.NonexistentEntityException;
@@ -31,8 +30,6 @@ public class ExpedienteJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
-    
 
     public void create(Expediente expediente) {
         EntityManager em = null;
@@ -144,24 +141,6 @@ public class ExpedienteJpaController implements Serializable {
             em.close();
         }
     }
-    
-//  private List<Expediente> findExpedienteBy() {
-//        EntityManager em = getEntityManager();
-//        try {
-//            if (all) {
-//                TypedQuery<Expediente> query = em.createNamedQuery("Expediente.findBy", Expediente.class);
-//                return query.getResultList();
-//            } else {
-//                TypedQuery<Expediente> query = em.createNamedQuery("Expediente.findAll", Expediente.class);
-//                query.setMaxResults(maxResults);
-//                query.setFirstResult(firstResult);
-//                return query.getResultList();
-//            }
-//        } finally {
-//            em.close();
-//        }
-//  }
-
 
     public Expediente findExpediente(Integer id) {
         EntityManager em = getEntityManager();
